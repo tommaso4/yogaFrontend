@@ -11,6 +11,8 @@ import { FooterComponent } from './component/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateAsanaComponent } from './pages/create-asana/create-asana.component';
+import { StandPoseComponent } from './pages/stand-pose/stand-pose.component';
+import { SitPoseComponent } from './pages/sit-pose/sit-pose.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CreateAsanaComponent } from './pages/create-asana/create-asana.componen
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    CreateAsanaComponent
+    CreateAsanaComponent,
+    StandPoseComponent,
+    SitPoseComponent
   ],
   imports: [
     BrowserModule,
