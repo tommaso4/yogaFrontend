@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateAsanaComponent } from './pages/create-asana/create-asana.component';
 import { StandPoseComponent } from './pages/stand-pose/stand-pose.component';
 import { SitPoseComponent } from './pages/sit-pose/sit-pose.component';
+import { BelancePoseComponent } from './pages/balance-pose/belance-pose.component';
+import { MantraComponent } from './pages/mantra/mantra.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { SitPoseComponent } from './pages/sit-pose/sit-pose.component';
     FooterComponent,
     CreateAsanaComponent,
     StandPoseComponent,
-    SitPoseComponent
+    SitPoseComponent,
+    BelancePoseComponent,
+    MantraComponent
   ],
   imports: [
     BrowserModule,
