@@ -7,6 +7,8 @@
 
 //general classes
 
+
+
 #asanaConteiner {
   display: flex;
   flex-wrap: wrap;
@@ -26,12 +28,17 @@
       text-align: center;
       margin: 10px auto 20px auto;
       border: 2px solid $azzure;
+      padding: 0 20px;
+      p{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
 
       &:hover {
         p {
           transform: scale(1.1);
         }
-
         cursor: pointer;
       }
     }
@@ -39,13 +46,19 @@
     img {
       width: 100%;
       transform: scale(1.1);
-
       &:hover {
         cursor: pointer;
       }
 
     }
   }
+
+}
+
+.ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 

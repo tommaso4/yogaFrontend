@@ -15,6 +15,8 @@ import { StandPoseComponent } from './pages/stand-pose/stand-pose.component';
 import { SitPoseComponent } from './pages/sit-pose/sit-pose.component';
 import { BelancePoseComponent } from './pages/balance-pose/belance-pose.component';
 import { MantraComponent } from './pages/mantra/mantra.component';
+import { CommonModule } from '@angular/common';
+import { AsideBarComponent } from './component/aside-bar/aside-bar.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +30,15 @@ import { MantraComponent } from './pages/mantra/mantra.component';
     StandPoseComponent,
     SitPoseComponent,
     BelancePoseComponent,
-    MantraComponent
+    MantraComponent,
+    AsideBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
