@@ -1,3 +1,51 @@
-div{
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import "../styles.scss";
+
+.routerOutlet {
   margin-bottom: 70px;
 }
+
+//general classes
+
+#asanaConteiner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 30px 0 15px 0;
+
+  .asanaCard {
+    background-color: $azzure-bg;
+    border: 2px solid $azzure;
+    width: 30%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 15px;
+
+    .asaName {
+      width: 50%;
+      text-align: center;
+      margin: 10px auto 20px auto;
+      border: 2px solid $azzure;
+
+      &:hover {
+        p {
+          transform: scale(1.1);
+        }
+
+        cursor: pointer;
+      }
+    }
+
+    img {
+      width: 100%;
+      transform: scale(1.1);
+
+      &:hover {
+        cursor: pointer;
+      }
+
+    }
+  }
+}
+
+
