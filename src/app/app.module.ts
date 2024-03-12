@@ -17,6 +17,7 @@ import { BelancePoseComponent } from './pages/balance-pose/belance-pose.componen
 import { MantraComponent } from './pages/mantra/mantra.component';
 import { CommonModule } from '@angular/common';
 import { AsideBarComponent } from './component/aside-bar/aside-bar.component';
+import { NavigationComponent } from './component/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AsideBarComponent } from './component/aside-bar/aside-bar.component';
     SitPoseComponent,
     BelancePoseComponent,
     MantraComponent,
-    AsideBarComponent
+    AsideBarComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,

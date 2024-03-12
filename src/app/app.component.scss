@@ -1,14 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 @import "../styles.scss";
 
-.routerOutlet {
-  margin-bottom: 70px;
+
+#app-comp-div{
+  background-color: $azzure-bg;
+  .router-outlet {
+    margin-bottom:44px;
+  }
 }
+.custom-scroll-bar{
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    width: 12px;
+    border: 1px  solid $azzure-bg;
 
+  }
+  ::-webkit-scrollbar-track {
+    background: $azzure-bg;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $azzure-bg;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: $azzure;
+  }
+  ::-webkit-scrollbar-button{
+    border: 1px solid $azzure;
+    background-color: $orange;
+  }
+}
 //general classes
-
-
-
 #asanaConteiner {
   display: flex;
   flex-wrap: wrap;
@@ -26,7 +47,7 @@
     .asaName {
       width: 50%;
       text-align: center;
-      margin: 10px auto 20px auto;
+      margin: 10px auto 25px auto;
       border: 2px solid $azzure;
       padding: 0 20px;
       p{
