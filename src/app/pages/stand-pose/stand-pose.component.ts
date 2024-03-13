@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { IAsana } from '../../modules/IAsana';
 import { AsanaSvcService } from '../../services/asana-svc.service';
-import { Subscription, Unsubscribable, catchError } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { IAsana } from '../../modules/IAsana';
 
 @Component({
   selector: 'app-stand-pose',
@@ -27,12 +27,4 @@ export class StandPoseComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     this.unsubscribeAsana.unsubscribe();
   }
-
-  // ngOnInit(): void {
-  //   this.unsubscribeAsana = this.asanaSvc.allAsana$.subscribe(data => {
-  //     this.allAsana = data;
-  //     this.myAsana = this.allAsana?.filter(asana => asana.typeAsana === "SITPOSE");
-  //     console.log(this.myAsana); // Sposta qui la stampa
-  //   });
-  // }
 }

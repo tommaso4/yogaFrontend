@@ -17,6 +17,7 @@ import { MantraComponent } from './pages/mantra/mantra.component';
 import { CommonModule } from '@angular/common';
 import { AsideBarComponent } from './component/aside-bar/aside-bar.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
+import { DetailAsanaComponent } from './pages/detail-asana/detail-asana.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NavigationComponent } from './component/navigation/navigation.component
     BelancePoseComponent,
     MantraComponent,
     AsideBarComponent,
-    NavigationComponent
+    NavigationComponent,
+    DetailAsanaComponent
   ],
   imports: [
     BrowserModule,

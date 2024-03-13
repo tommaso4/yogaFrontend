@@ -3,15 +3,18 @@
   <div class="container-home" [ngClass]="{ 'no-jump-content': this.isSticky }">
     <app-aside-bar></app-aside-bar>
     <div class="container-outlet">
-      <p id="R" (click)="this.open()" *ngIf="!isOpen"></p>
-      <i class="fas fa-arrow-right-long"></i>
+      <div id="R" (click)="this.open()" *ngIf="!isOpen">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+          <path fill="#18B0CB" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+        </svg>
+      </div>
       <router-outlet></router-outlet>
       <div *ngIf="isInHome()" id="asanaConteiner">
         <div *ngFor="let asa of allAsana" class="asanaCard">
           <div class="asaName">
-            <p class="ellipsis font-primary">{{ asa.name }}</p>
+            <p [routerLink]="['detail/',asa.id]" class="ellipsis font-primary">{{ asa.name }}</p>
           </div>
-          <img [src]="asa.urlImg" alt="" />
+          <img [routerLink]="['detail/',asa.id]" [src]="asa.urlImg" alt="" />
         </div>
       </div>
     </div>

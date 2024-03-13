@@ -8,6 +8,7 @@ import { StandPoseComponent } from './pages/stand-pose/stand-pose.component';
 import { SitPoseComponent } from './pages/sit-pose/sit-pose.component';
 import { BelancePoseComponent } from './pages/balance-pose/belance-pose.component';
 import { MantraComponent } from './pages/mantra/mantra.component';
+import { DetailAsanaComponent } from './pages/detail-asana/detail-asana.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent },
@@ -15,8 +16,9 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent,children:[
     {path:'standPose',component: StandPoseComponent},
     {path:'sitPose',component:SitPoseComponent},
-    {path:'belance',component:BelancePoseComponent},
+    {path:'balance',component:BelancePoseComponent},
     {path:'mantra',component:MantraComponent},
+    {path:'detail/:id', component: DetailAsanaComponent},
   ]},
   {path: 'createAsana', component: CreateAsanaComponent}
 ];

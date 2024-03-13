@@ -35,15 +35,15 @@ export class AsideBarComponent implements OnInit {
   setHeightOnScroll() {
     window.addEventListener('scroll', () => {
       const scrollPosition: number = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      const scrllPositionVh: number = parseInt((scrollPosition / (window.innerHeight / 100)).toFixed())
+      const scrollPositionVh: number = parseInt((scrollPosition / (window.innerHeight / 100)).toFixed())
       const asideBar = document.getElementById('aside-bar')
-
-      if (scrllPositionVh >= 0 && scrllPositionVh <= 12) {
-        if (asideBar) {
-          let heightOnScroll = (68 + scrllPositionVh).toString();
+      if (asideBar)
+        if (scrollPositionVh >= 0 && scrollPositionVh <= 12) {
+          let heightOnScroll = (68 + scrollPositionVh).toString();
           asideBar.style.height = `${heightOnScroll}vh`;
+        } else if (scrollPositionVh >= 12) {
+          asideBar.style.height = `80vh`;
         }
-      }
     })
   }
 }

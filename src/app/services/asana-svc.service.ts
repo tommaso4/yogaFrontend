@@ -1,8 +1,7 @@
-import { IAsana } from './../modules/IAsana';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, EMPTY, Observable, switchMap, tap } from 'rxjs';
-import { LogSvcService } from './log-svc.service';
+import { IAsana } from '../modules/IAsana';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +9,6 @@ import { LogSvcService } from './log-svc.service';
 export class AsanaSvcService {
 
   getAllUrl: string = 'http://localhost:8080/asana/getAll';
-  getByType:string = 'http://localhost:8080/asana/getByType/'
   allAsanaBhvr: BehaviorSubject<IAsana[]| undefined> = new BehaviorSubject<IAsana[]| undefined>(undefined);
   allAsana$ = this.allAsanaBhvr.asObservable();
 

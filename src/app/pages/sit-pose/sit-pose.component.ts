@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IAsana } from '../../modules/IAsana';
 import { AsanaSvcService } from '../../services/asana-svc.service';
-import { Subscription, catchError } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { IAsana } from '../../modules/IAsana';
 
 @Component({
   selector: 'app-sit-pose',

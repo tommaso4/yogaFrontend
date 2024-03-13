@@ -1,26 +1,8 @@
 @import "../../app.component.scss";
 
-// const scrollPosition: number = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-// const scrllPositionVh: number = (scrollPosition / (window.innerHeight / 100).toFixed(2));
-// const asideBar = document.getElementById('aside-bar');
-
-// if (scrllPositionVh >= 0 && scrllPositionVh <= 12) {
-//   if (asideBar) {
-//     let heightOnScroll = (68 + scrllPositionVh).toString();
-//     asideBar.style.height = `${heightOnScroll}vh`;
-//     console.log(heightOnScroll);
-//     console.log(scrllPositionVh);
-
-
-
-//   }
-// }
-
 #aside-bar {
-  // flex-shrink: 0;
   display: none;
   width: 15vw;
-  height: 68vh;
   border: 2px solid $azzure;
   background-color: $azzure-bg;
 
@@ -28,6 +10,10 @@
     display: block;
     position: sticky;
     top: 10vh;
+    #L{
+      position: absolute;
+      right: 5px;
+    }
   }
 
   p {
@@ -35,7 +21,6 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     padding: 3px 0;
-
     &:hover {
       background-color: lighten($azzure-bg, 0.3);
     }

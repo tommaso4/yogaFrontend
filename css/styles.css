@@ -1,52 +1,34 @@
-//general variables:
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
-$font-primary: "Quicksand", sans-serif;
-
-$text-primary: (
-  font-family: $font-primary,
-  font-optical-sizing: auto,
-  font-weight: 500,
-  font-style: normal,
-  font-size: larger,
-  color: rgb(33, 35, 84)
-);
-
-$orange1: rgba(255, 137, 19, 0.4);
-$orange: #F8B037;
-$blue-primary: rgba(43, 105, 240, 0.75);
-$azzure: #18B0CB;
-$azzure-bg2: rgba(80, 197, 218, 0.603);
-$azzure-bg: rgba(24, 176, 203, 0.25);
-
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 .font-primary {
-  @each $property, $value in $text-primary {
-    #{$property}: $value;
-  }
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: larger;
+  color: rgb(33, 35, 84);
 }
 
 html {
   overflow-y: scroll;
-  ::-webkit-scrollbar {
-    width: 12px;
-    border: 1px  solid $azzure-bg;
-
-  }
-  ::-webkit-scrollbar-track {
-    background: $azzure-bg;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: $azzure-bg;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: $azzure;
-  }
-  ::-webkit-scrollbar-button{
-    border: 1px solid $azzure;
-    background-color: $orange;
-  }
+}
+html ::-webkit-scrollbar {
+  width: 12px;
+  border: 1px solid rgba(24, 176, 203, 0.25);
+}
+html ::-webkit-scrollbar-track {
+  background: rgba(24, 176, 203, 0.25);
+}
+html ::-webkit-scrollbar-thumb {
+  background: rgba(24, 176, 203, 0.25);
+}
+html ::-webkit-scrollbar-thumb:hover {
+  background: #18B0CB;
+}
+html ::-webkit-scrollbar-button {
+  border: 1px solid #18B0CB;
+  background-color: #F8B037;
 }
 
-//reset
 html,
 body,
 div,
@@ -144,7 +126,6 @@ details,
 figcaption,
 figure,
 footer,
-
 header,
 hgroup,
 menu,
@@ -171,11 +152,11 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
+}/*# sourceMappingURL=styles.css.map */

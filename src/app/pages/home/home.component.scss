@@ -4,6 +4,7 @@
   padding-top: 55px;
 }
 
+
 #home-page {
   .container-home {
     display: flex;
@@ -17,8 +18,8 @@
       position: relative;
       #R {
         position: absolute;
-        top: 5px;
-        left: 5px;
+        top: 2px;
+        left: 2px;
       }
       // flex-shrink: 3;
     }

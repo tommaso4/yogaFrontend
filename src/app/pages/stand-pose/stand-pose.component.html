@@ -1,8 +1,8 @@
 <div id="asanaConteiner">
   <div *ngFor="let asa of myAsana" class="asanaCard">
-    <div class="asaName">
+    <div [routerLink]="['/home/detail/',asa.id]" class="asaName">
       <p class="font-primary">{{asa.name}}</p>
     </div>
-    <img [src]="asa.urlImg" alt="">
+    <img [routerLink]="['/home/detail/',asa.id]" [src]="asa.urlImg" alt="">
   </div>
 </div>
