@@ -5,15 +5,16 @@
 #app-comp-div{
   background-color: $azzure-bg;
   .router-outlet {
-    margin-bottom:44px;
+    margin-bottom:10vh;//--------------------
   }
 }
+//general classes
+
 .custom-scroll-bar{
   overflow-y: scroll;
   ::-webkit-scrollbar {
     width: 12px;
     border: 1px  solid $azzure-bg;
-
   }
   ::-webkit-scrollbar-track {
     background: $azzure-bg;
@@ -29,7 +30,7 @@
     background-color: $orange;
   }
 }
-//general classes
+
 #asanaConteiner {
   display: flex;
   flex-wrap: wrap;
