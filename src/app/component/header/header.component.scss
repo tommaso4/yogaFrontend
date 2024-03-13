@@ -1,0 +1,19 @@
+@import "../../app.component.scss";
+
+#header {
+  background-color: $azzure-bg;
+  height: 12vh;
+  padding: 1vh 0;
+
+  #logo img {
+    height: 10vh;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  .logout:hover {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,30 @@
+<div id="header" class="d-flex justify-content-between align-items-center px-2">
+  <div id="logo" *ngIf="!loggedIn">
+    <a routerLink="">
+      <img
+        src="../../../assets/logo.png"
+        alt="logo"
+      />
+    </a>
+  </div>
+  <div id="logo" *ngIf="loggedIn">
+    <a routerLink="/home">
+      <img
+        src="../../../assets/logo.png"
+        alt="logo"
+      />
+    </a>
+  </div>
+  <div *ngIf="admin">
+    <a routerLink="/createAsana" class="pe-3">createAsana</a>
+    <a routerLink="/createAsana">deleteUser</a>
+  </div>
+  <div *ngIf="loggedIn" class="d-flex me-3">
+    <h5 class="pe-3">{{username}}</h5>
+    <a class="logout" (click)="logOut()">logOut</a>
+  </div>
+  <div *ngIf="!loggedIn" class="me-3">
+    <a routerLink=""  *ngIf="!isInLog()">LOG-IN</a>
+    <a routerLink="/register" *ngIf="!isInSign()">SIGN-I</a>
+  </div>
+</div>

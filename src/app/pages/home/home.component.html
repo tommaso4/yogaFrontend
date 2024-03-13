@@ -1,0 +1,19 @@
+<div id="home-page">
+  <app-navigation></app-navigation>
+  <div class="container-home" [ngClass]="{ 'no-jump-content': this.isSticky }">
+    <app-aside-bar></app-aside-bar>
+    <div class="container-outlet">
+      <p id="R" (click)="this.open()" *ngIf="!isOpen"></p>
+      <i class="fas fa-arrow-right-long"></i>
+      <router-outlet></router-outlet>
+      <div *ngIf="isInHome()" id="asanaConteiner">
+        <div *ngFor="let asa of allAsana" class="asanaCard">
+          <div class="asaName">
+            <p class="ellipsis font-primary">{{ asa.name }}</p>
+          </div>
+          <img [src]="asa.urlImg" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

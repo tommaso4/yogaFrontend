@@ -1,0 +1,26 @@
+@import "../../app.component.scss";
+
+.no-jump-content{
+  padding-top: 55px;
+}
+
+#home-page {
+  .container-home {
+    display: flex;
+    // align-items: flex-start;
+
+    .custom-scroll-bar {
+      height: 80vh;
+    }
+
+    .container-outlet {
+      position: relative;
+      #R {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+      }
+      // flex-shrink: 3;
+    }
+  }
+}

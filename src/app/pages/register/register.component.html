@@ -1,0 +1,50 @@
+<div id="register">
+  <div *ngIf="loading">Loading...</div>
+  <form [formGroup]="form">
+    <div>
+      <label for="name">Name: </label>
+      <input class="form-control" type="text" id="name" formControlName="name"/>
+    </div>
+    <div *ngIf="isValidAndTouched('name')" class="alert alert-warning">Name Required</div>
+    <div>
+      <label for="surname">Surname: </label>
+      <input class="form-control" type="text" id="surname" formControlName="surname" />
+    </div>
+    <div *ngIf="isValidAndTouched('surname')" class="alert alert-warning">Surname Required</div>
+    <div>
+      <label for="userName">UserName: </label>
+      <input class="form-control" type="text" id="username" formControlName="username" />
+    </div>
+    <div *ngIf="isValidAndTouched('username')" class="alert alert-warning">Username Required</div>
+     <div>
+      <label for="email">Email: </label>
+      <input class="form-control" type="email" id="email" formControlName="email" />
+    </div>
+    <div *ngIf="isValidAndTouched('email')" class="alert alert-warning">Email Required </div>
+     <div>
+      <label for="password1">Password: </label>
+      <input class="form-control" type="password" id="password1" formControlName="password1" />
+    </div>
+    <div *ngIf="isValidAndTouched('password1')" class="alert alert-warning">
+      <p>Not a valid password. It must contains:</p>
+      <ul>
+        <li>At least 8 characters</li>
+        <li>A number</li>
+        <li>An uppercase letter</li>
+        <li>A lowercase letter</li>
+        <li>A special character</li>
+      </ul></div>
+    <div>
+      <label for="password">Password: </label>
+      <input class="form-control" type="password" id="password" formControlName="password">
+    </div>
+    <div *ngIf="isValidAndTouched('password')" class="alert alert-warning">
+      {{getCustomMessage('password')}}
+    </div>
+    <div class="mt-2">
+      <button [disabled]="!form.valid" (click)="submit()">SIGN-IN</button>
+      <a routerLink="" class="ps-4">Log-in</a>
+    </div>
+  </form>
+
+</div>
