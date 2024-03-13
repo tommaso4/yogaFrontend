@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -40,7 +39,7 @@ import { NavigationComponent } from './component/navigation/navigation.component
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
