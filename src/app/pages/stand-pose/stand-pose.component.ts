@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AsanaSvcService } from '../../services/asana-svc.service';
-import { Subscription } from 'rxjs';
+import { Subscription, catchError, pipe } from 'rxjs';
 import { IAsana } from '../../modules/IAsana';
 
 @Component({
@@ -10,7 +10,6 @@ import { IAsana } from '../../modules/IAsana';
 })
 export class StandPoseComponent implements OnInit, OnDestroy{
 
-  allAsana! : IAsana[] |undefined;
   myAsana! :IAsana[]| undefined;
   unsubscribeAsana!: Subscription;
 
@@ -21,10 +20,21 @@ export class StandPoseComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
       this.unsubscribeAsana =this.asanaSvc.allAsana$.subscribe(data=>{
-        this.allAsana = data
-        this.myAsana = this.allAsana?.filter(asana=>asana.typeAsana=== "STANDPOSE")})
+        this.myAsana = data?.filter(asana=>asana.typeAsana=== "STANDPOSE")})
   }
   ngOnDestroy(): void {
     this.unsubscribeAsana.unsubscribe();
   }
+
+  addToFavorites(idAsana:number):void{
+    this.asanaSvc.addTofavorites(idAsana.toString()).pipe(
+      catchError(err =>{
+        throw err;
+      })).subscribe()
+  }
+
+  isFavorited(idAsana:number):boolean{
+    return this.asanaSvc.isAsanaFavorite(idAsana)
+  }
+
 }

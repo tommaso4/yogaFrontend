@@ -70,7 +70,20 @@
       &:hover {
         cursor: pointer;
       }
-
+    }
+    #favorite{
+      padding: 8px 8px;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      &:hover{
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+      .favorited svg{
+        border-radius: 1px solid black;
+        fill: red;
+      }
     }
   }
 

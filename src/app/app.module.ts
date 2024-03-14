@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
 import { AsideBarComponent } from './component/aside-bar/aside-bar.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
 import { DetailAsanaComponent } from './pages/detail-asana/detail-asana.component';
+import { PersonalAsanaComponent } from './pages/personal-asana/personal-asana.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DetailAsanaComponent } from './pages/detail-asana/detail-asana.componen
     MantraComponent,
     AsideBarComponent,
     NavigationComponent,
-    DetailAsanaComponent
+    DetailAsanaComponent,
+    PersonalAsanaComponent
   ],
   imports: [
     BrowserModule,

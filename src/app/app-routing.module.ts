@@ -9,6 +9,7 @@ import { SitPoseComponent } from './pages/sit-pose/sit-pose.component';
 import { BelancePoseComponent } from './pages/balance-pose/belance-pose.component';
 import { MantraComponent } from './pages/mantra/mantra.component';
 import { DetailAsanaComponent } from './pages/detail-asana/detail-asana.component';
+import { PersonalAsanaComponent } from './pages/personal-asana/personal-asana.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path:'balance',component:BelancePoseComponent},
     {path:'mantra',component:MantraComponent},
     {path:'detail/:id', component: DetailAsanaComponent},
+    {path: 'myAsana', component: PersonalAsanaComponent},
   ]},
   {path: 'createAsana', component: CreateAsanaComponent}
 ];
