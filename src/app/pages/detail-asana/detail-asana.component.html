@@ -1,4 +1,20 @@
-<p> {{this.singleAsana?.id}}</p>
-<p> {{this.singleAsana?.name}}</p>
-<p> {{this.singleAsana?.drishti}}</p>
-<p> {{this.singleAsana?.description}}</p>
+<div id="cont-detail">
+  <div class="detail font-primary">
+    <div class="img-detail">
+      <img [src]="this.singleAsana?.urlImg" alt="img-detail">
+    </div>
+    <div class="prop-detail">
+      <h2>{{this.singleAsana?.name}}</h2>
+      <h4>Description:</h4>
+      <p>{{this.singleAsana?.description}}</p>
+      <h4>Drishty: </h4>
+      <p>{{this.singleAsana?.drishti}}</p>
+      <h4>Benefit: </h4>
+      <p>{{this.singleAsana?.benefit}}</p>
+      <h4>TypePose: </h4>
+      <p>{{this.singleAsana?.typeAsana}}</p>
+
+    </div>
+  </div>
+
+</div>

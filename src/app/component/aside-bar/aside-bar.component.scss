@@ -10,9 +10,15 @@
     display: block;
     position: sticky;
     top: 10vh;
-    #L{
+    #arrow-l{
       position: absolute;
       right: 5px;
+      svg {
+        &:hover{
+          transform: scale(1.2);
+          cursor: pointer;
+        }
+      }
     }
   }
 
@@ -22,6 +28,7 @@
     white-space: nowrap;
     padding: 3px 0;
     &:hover {
+      cursor: pointer;
       background-color: lighten($azzure-bg, 0.3);
     }
   }

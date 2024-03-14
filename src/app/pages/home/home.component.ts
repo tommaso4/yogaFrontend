@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit , OnDestroy {
         this.scrollSvc.isOpen$.subscribe(data=>{
           this.isOpen = data;
         })
+        this.scrollSvc.setArrowOnScroll()
   }
 
   ngOnDestroy(): void {

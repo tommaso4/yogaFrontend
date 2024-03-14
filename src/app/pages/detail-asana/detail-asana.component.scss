@@ -1,0 +1,42 @@
+@import "../../app.component.scss";
+
+#cont-detail {
+  box-sizing: border-box;
+  padding: 5vh 0;
+
+  .detail {
+    border: 3px solid $purple;
+
+    display: flex;
+    // flex-direction: column;
+    background-color: $carne;
+
+    .img-detail {
+      overflow: hidden;
+      width: 40vw;
+      border-right: 3px solid  $purple;
+
+      img {
+        width: 100%;
+        transform: scale(1.1);
+      }
+    }
+
+    .prop-detail {
+      padding: 0 1vw;
+      width: 40vw;
+
+      h2 {
+        text-align: center;
+        font-weight: bolder;
+        font-size: larger;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+    }
+
+  }
+
+}

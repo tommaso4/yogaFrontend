@@ -1,9 +1,12 @@
 @import "../../app.component.scss";
 
 #header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: $azzure-bg;
   height: 12vh;
-  padding: 1vh 0;
+  padding: 1vh 2vw;
 
   #logo img {
     height: 10vh;
@@ -12,6 +15,10 @@
   a {
     text-decoration: none;
     color: black;
+
+  }
+  h5{
+    font-weight: bolder;
   }
   .logout:hover {
     cursor: pointer;
