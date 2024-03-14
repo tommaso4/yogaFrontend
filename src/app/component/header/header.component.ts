@@ -15,29 +15,23 @@ export class HeaderComponent implements OnInit {
   admin: boolean = false;
   jwt: JwtHelperService = new JwtHelperService()
 
-  constructor(private logSvc: LogSvcService,
+  constructor(
+    private logSvc: LogSvcService,
     public router: Router) { }
 
   ngOnInit(): void {
 
     this.logSvc.authLog$.subscribe(auth => {
       if (auth) {
-        console.log(auth);
-
         this.loggedIn = true;
         this.username = localStorage.getItem('username')
-        console.log(this.username);
-
         let role = localStorage.getItem('role')
-        console.log(role);
 
         if (role === "ADMIN") {
           this.admin = true;
-          console.log("admin");
         }
         else {
           this.admin = false;
-          console.log("client");
         }
       } else {
         this.loggedIn = false;

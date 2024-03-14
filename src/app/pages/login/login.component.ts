@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LogSvcService } from '../../services/log-svc.service';
 import { Router } from '@angular/router';
-import { catchError } from 'rxjs';
+import { Subscription, catchError } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
@@ -10,18 +10,20 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   jwt: JwtHelperService = new JwtHelperService();
   errorStatus: boolean = false;
   error!: string;
   loading: boolean = false;
+  subLogin!: Subscription;
 
   constructor(
     public formBuilder: FormBuilder,
     public logSvc: LogSvcService,
     public router: Router
   ) { }
+
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -30,9 +32,13 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  ngOnDestroy(): void {
+    this.subLogin.unsubscribe();
+  }
+
   submit(): void {
     this.loading = true;
-    this.logSvc.login(this.form.value).pipe(
+    this.subLogin = this.logSvc.login(this.form.value).pipe(
       catchError(err => {
         console.error(err);
         this.errorStatus = true;
@@ -43,7 +49,6 @@ export class LoginComponent implements OnInit {
     ).subscribe(data => {
       let token: string = data.response;
       if (token) {
-        // this.logSvc.isLoggedIn.next(true)
         let role: string | null = this.jwt.decodeToken(token).role;
         if (role) {
           if (role === 'ADMIN') {

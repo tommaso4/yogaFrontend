@@ -15,9 +15,9 @@
   </div>
   <div *ngIf="loggedIn" class="d-flex me-3">
     <h5 class="pe-3">{{username}}</h5>
-    <a class="logout" (click)="logOut()">logOut</a>
+    <a class="logout" (click)="logOut()">Log-out</a>
   </div>
-  <div *ngIf="!loggedIn" class="me-3">
+  <div *ngIf="!loggedIn" class="me-3 d-flex justify-content-center align-content-center">
     <a routerLink=""  *ngIf="!isInLog()" class="font-primary">LOG-IN</a>
     <a routerLink="/register" *ngIf="!isInSign()" class="font-primary">SIGN-IN</a>
   </div>

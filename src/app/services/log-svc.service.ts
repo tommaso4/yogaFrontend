@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Iregister } from '../modules/Iregister';
-import { BehaviorSubject, Observable, Subscription, take, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ILogin } from '../modules/ilogin';
 import { Iresponse } from '../modules/Iresponse';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -17,16 +17,6 @@ export class LogSvcService {
   isLoggedIn :BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   authLog$ = this.isLoggedIn.asObservable();
   jwt: JwtHelperService = new JwtHelperService()
-
-
-
-
-  token3: BehaviorSubject<string> = new BehaviorSubject<string>("");
-  token$ = this.token3.asObservable();
-  // loggedInSubscription!: Subscription;
-  // tokenSubscription!: Subscription;
-
-
 
   constructor(
     public http: HttpClient,
@@ -45,7 +35,9 @@ export class LogSvcService {
       localStorage.setItem('username',username)
       let role = this.jwt.decodeToken(token).role;
       localStorage.setItem('role',role)
-
+      let id = this.jwt.decodeToken(token).idUser;
+      localStorage.setItem('idUser',id)
+      console.log(id);
       this.isLoggedIn.next(true)
     }))
   }
@@ -55,6 +47,7 @@ export class LogSvcService {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     localStorage.removeItem('role');
+    localStorage.removeItem('idUser');
     this.isLoggedIn.next(false)
   }
 }

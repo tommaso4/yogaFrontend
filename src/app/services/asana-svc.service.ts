@@ -27,4 +27,13 @@ export class AsanaSvcService {
     }else
     return EMPTY;
   }
+//   getPersonalAsana(): Observable<Any>{
+//     const token = localStorage.getItem('token');
+//     if (token) {
+//       const header = new HttpHeaders({
+//         'Authorization': 'Bearer ' + token
+//       });
+
+//   }
+// }
 }
