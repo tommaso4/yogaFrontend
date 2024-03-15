@@ -25,6 +25,8 @@ export class AsanaSvcService {
     const header = this.getHeaders();
     return this.http.get<any>(this.getAllAsanaUrl, { headers: header }).pipe(tap(data => {
       this.allAsanaBvr.next(data.response)
+      console.log(data.response);
+
     }))
   }
 
