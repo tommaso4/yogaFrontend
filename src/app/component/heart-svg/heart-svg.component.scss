@@ -1,0 +1,20 @@
+@import "../../app.component.scss";
+
+#heart{
+  padding: 8px 8px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  &:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+
+}
+.favorite svg{
+  fill: $orange;
+}
+
+.not-favorite svg{
+  fill: $azzure;
+}

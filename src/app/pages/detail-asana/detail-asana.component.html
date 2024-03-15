@@ -1,18 +1,19 @@
 <div id="cont-detail">
   <div class="detail font-primary">
     <div id="img-detail">
-      <img [src]="this.singleAsana?.urlImg" alt="img-detail">
+      <img [src]="singleAsana?.urlImg" alt="img-detail">
+      <app-heart-svg [asanaId]="singleAsana!.id" [asana]="singleAsana!"></app-heart-svg>
     </div>
     <div id="prop-detail">
-      <h2>{{this.singleAsana?.name}}</h2>
+      <h2>{{singleAsana?.name}}</h2>
       <h4>Description:</h4>
-      <p>{{this.singleAsana?.description}}</p>
+      <p>{{singleAsana?.description}}</p>
       <h4>Drishty: </h4>
-      <p>{{this.singleAsana?.drishti}}</p>
+      <p>{{singleAsana?.drishti}}</p>
       <h4>Benefit: </h4>
-      <p>{{this.singleAsana?.benefit}}</p>
+      <p>{{singleAsana?.benefit}}</p>
       <h4>TypePose: </h4>
-      <p>{{this.singleAsana?.typeAsana}}</p>
+      <p>{{singleAsana?.typeAsana}}</p>
 
     </div>
   </div>

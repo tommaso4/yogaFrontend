@@ -20,6 +20,7 @@ import { NavigationComponent } from './component/navigation/navigation.component
 import { DetailAsanaComponent } from './pages/detail-asana/detail-asana.component';
 import { PersonalAsanaComponent } from './pages/personal-asana/personal-asana.component';
 import { AsanaFilteredComponent } from './component/asana-filtered/asana-filtered.component';
+import { HeartSvgComponent } from './component/heart-svg/heart-svg.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AsanaFilteredComponent } from './component/asana-filtered/asana-filtere
     NavigationComponent,
     DetailAsanaComponent,
     PersonalAsanaComponent,
-    AsanaFilteredComponent
+    AsanaFilteredComponent,
+    HeartSvgComponent
   ],
   imports: [
     BrowserModule,

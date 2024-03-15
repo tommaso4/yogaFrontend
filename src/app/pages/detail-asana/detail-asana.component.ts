@@ -21,7 +21,6 @@ export class DetailAsanaComponent implements OnInit, OnDestroy {
   constructor(
     private activatedroute: ActivatedRoute,
     private asanaSvc: AsanaSvcService,
-    private elementRef: ElementRef
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +32,6 @@ export class DetailAsanaComponent implements OnInit, OnDestroy {
       this.allAsana = allAsana
       this.upDateSingleAsana()
     })
-    // this.setHeightDetails()
   }
 
   ngOnDestroy(): void {
@@ -42,13 +40,7 @@ export class DetailAsanaComponent implements OnInit, OnDestroy {
   }
 
   upDateSingleAsana(): void {
+    if(this.allAsana)
     this.singleAsana = this.allAsana?.find(asa => asa.id === parseInt(this.idAsana || '', 10));
   }
-  // setHeightDetails() {
-  //   const imgDetail = this.elementRef.nativeElement.querySelector('#img-detail')
-  //   const propDetail = this.elementRef.nativeElement.querySelector('#prop-detail')
-  //   const heightImg:string = imgDetail.offsetHeight.toString();
-  //   propDetail.style.height = heightImg + 'px';
-
-  // }
 }

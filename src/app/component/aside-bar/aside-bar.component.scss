@@ -5,6 +5,7 @@
   width: 15vw;
   border: 2px solid $azzure;
   background-color: $azzure-bg;
+  overflow-y: scroll;
 
   &.open {
     display: block;

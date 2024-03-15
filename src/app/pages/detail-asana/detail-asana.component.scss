@@ -11,9 +11,10 @@
     background-color: $carne;
 
     #img-detail {
+      position: relative;
       overflow: hidden;
       width: 40vw;
-      height: 350px;
+      height: 60vh;
       border-right: 3px solid  $purple;
       img {
         width: 100%;
@@ -24,7 +25,7 @@
     #prop-detail {
       padding: 1vh 1vw;
       width: 40vw;
-      height: 350px;
+      height: 60vh;
       overflow-y: scroll;
       h2 {
         text-align: center;
