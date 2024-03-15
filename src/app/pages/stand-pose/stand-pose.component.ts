@@ -26,15 +26,23 @@ export class StandPoseComponent implements OnInit, OnDestroy{
     this.unsubscribeAsana.unsubscribe();
   }
 
-  addToFavorites(idAsana:number):void{
-    this.asanaSvc.addTofavorites(idAsana.toString()).pipe(
+  addToFavorites(idAsana:number, asana:IAsana):void{
+    this.asanaSvc.addTofavorites(idAsana.toString(), asana).pipe(
       catchError(err =>{
         throw err;
       })).subscribe()
   }
 
-  isFavorited(idAsana:number):boolean{
-    return this.asanaSvc.isAsanaFavorite(idAsana)
+  removeToFavorite(idAsana:number,asana:IAsana):void{
+    this.asanaSvc.removeToFavorite(idAsana.toString(),asana).pipe(
+      catchError(err =>{
+        throw err;
+      })
+    ).subscribe()
+  }
+
+  isFavorited(asana:IAsana):boolean{
+    return this.asanaSvc.isAsanaFavorite(asana)
   }
 
 }

@@ -1,5 +1,5 @@
 import { IAsana } from './../../modules/IAsana';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AsanaSvcService } from '../../services/asana-svc.service';
 import { Subscription } from 'rxjs';
@@ -21,6 +21,7 @@ export class DetailAsanaComponent implements OnInit, OnDestroy {
   constructor(
     private activatedroute: ActivatedRoute,
     private asanaSvc: AsanaSvcService,
+    private elementRef: ElementRef
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +33,7 @@ export class DetailAsanaComponent implements OnInit, OnDestroy {
       this.allAsana = allAsana
       this.upDateSingleAsana()
     })
+    // this.setHeightDetails()
   }
 
   ngOnDestroy(): void {
@@ -42,4 +44,11 @@ export class DetailAsanaComponent implements OnInit, OnDestroy {
   upDateSingleAsana(): void {
     this.singleAsana = this.allAsana?.find(asa => asa.id === parseInt(this.idAsana || '', 10));
   }
+  // setHeightDetails() {
+  //   const imgDetail = this.elementRef.nativeElement.querySelector('#img-detail')
+  //   const propDetail = this.elementRef.nativeElement.querySelector('#prop-detail')
+  //   const heightImg:string = imgDetail.offsetHeight.toString();
+  //   propDetail.style.height = heightImg + 'px';
+
+  // }
 }

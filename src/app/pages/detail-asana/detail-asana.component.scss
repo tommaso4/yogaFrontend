@@ -6,32 +6,31 @@
 
   .detail {
     border: 3px solid $purple;
-
     display: flex;
-    // flex-direction: column;
+    // flex-direction: column;-----------------------------------------------------
     background-color: $carne;
 
-    .img-detail {
+    #img-detail {
       overflow: hidden;
       width: 40vw;
+      height: 350px;
       border-right: 3px solid  $purple;
-
       img {
         width: 100%;
-        transform: scale(1.1);
+        transform: scale(1.2);
       }
     }
 
-    .prop-detail {
-      padding: 0 1vw;
+    #prop-detail {
+      padding: 1vh 1vw;
       width: 40vw;
-
+      height: 350px;
+      overflow-y: scroll;
       h2 {
         text-align: center;
         font-weight: bolder;
         font-size: larger;
       }
-
       h4 {
         font-weight: bold;
       }
