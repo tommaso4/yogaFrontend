@@ -1,8 +1,1 @@
-<div id="asanaConteiner">
-  <div *ngFor="let asa of myAsana" class="asanaCard">
-    <div [routerLink]="['/home/detail/',asa.id]" class="asaName">
-      <p class="font-primary">{{asa.name}}</p>
-    </div>
-    <img [routerLink]="['/home/detail/',asa.id]" [src]="asa.urlImg" alt="">
-  </div>
-</div>
+<app-asana-filtered [positionType]="'SITPOSE'"></app-asana-filtered>

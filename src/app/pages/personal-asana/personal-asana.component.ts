@@ -10,7 +10,7 @@ import { Subscription, catchError } from 'rxjs';
 })
 export class PersonalAsanaComponent implements OnInit , OnDestroy {
 
-  myAsana!: IAsana[];
+  myAsana!: IAsana[] | undefined;
   subMyAsana!: Subscription
 
   constructor(
@@ -19,17 +19,10 @@ export class PersonalAsanaComponent implements OnInit , OnDestroy {
 
 
   ngOnInit(): void {
-    this.subMyAsana= this.asanaSvc.getUser().pipe(
-      catchError(error =>{
-        throw error;
-      })
-    ).subscribe(data=>{
-      this.myAsana = data.response.asana
-    })
+    this.myAsana = this.asanaSvc.favoriteAsanas;
   }
 
   ngOnDestroy(): void {
-    this.subMyAsana.unsubscribe()
-
+    this.myAsana = [];
   }
 }

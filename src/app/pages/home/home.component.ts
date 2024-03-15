@@ -11,42 +11,46 @@ import { ScrollSvcService } from '../../services/scroll-svc.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit , OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy {
 
   allAsana!: IAsana[];
   asanaSubscription!: Subscription;
-  isSticky : boolean = false;
+  isSticky: boolean = false;
   isOpen: boolean = false;
 
   constructor(
     private router: Router,
     private asanaSvc: AsanaSvcService,
-    private scrollSvc:ScrollSvcService
-  ) {}
+    private scrollSvc: ScrollSvcService
+  ) { }
 
   ngOnInit(): void {
-        this.fetchAllAsana();
-        this.scrollSvc.isSticky$.subscribe(data=>{
-          this.isSticky = data;
-        })
-        this.scrollSvc.isOpen$.subscribe(data=>{
-          this.isOpen = data;
-        })
-        this.scrollSvc.setArrowOnScroll()
+
+    this.fetchUser();
+    this.fetchAllAsana();
+
+    this.scrollSvc.isSticky$.subscribe(data => {
+      this.isSticky = data;
+    })
+    this.scrollSvc.isOpen$.subscribe(data => {
+      this.isOpen = data;
+    })
+    this.scrollSvc.setArrowOnScroll()
   }
 
   ngOnDestroy(): void {
-    if (this.asanaSubscription)this.asanaSubscription.unsubscribe()
+    if (this.asanaSubscription) this.asanaSubscription.unsubscribe()
   }
 
-  fetchAllAsana(): void {
+  fetchAllAsana(){
     this.asanaSubscription = this.asanaSvc.getAllAsana().pipe(
       catchError(err => {
         throw err;
       })
-    ).subscribe(data => {
-      this.allAsana = data.response;
-    });
+    ).subscribe()
+    // .subscribe(data => {
+    //   this.allAsana = data.response;
+    // });
   }
 
   isInHome(): boolean {
@@ -54,7 +58,14 @@ export class HomeComponent implements OnInit , OnDestroy {
   }
 
   // aside-bar
-  open():void{
+  open(): void {
     this.scrollSvc.setIsOpen(true)
+  }
+  fetchUser(){
+    this.asanaSvc.getUser().pipe(
+      catchError(error => {
+        throw error;
+      })
+    ).subscribe()
   }
 }

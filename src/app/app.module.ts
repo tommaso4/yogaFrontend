@@ -19,6 +19,7 @@ import { AsideBarComponent } from './component/aside-bar/aside-bar.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
 import { DetailAsanaComponent } from './pages/detail-asana/detail-asana.component';
 import { PersonalAsanaComponent } from './pages/personal-asana/personal-asana.component';
+import { AsanaFilteredComponent } from './component/asana-filtered/asana-filtered.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PersonalAsanaComponent } from './pages/personal-asana/personal-asana.co
     AsideBarComponent,
     NavigationComponent,
     DetailAsanaComponent,
-    PersonalAsanaComponent
+    PersonalAsanaComponent,
+    AsanaFilteredComponent
   ],
   imports: [
     BrowserModule,

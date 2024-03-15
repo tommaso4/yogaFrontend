@@ -9,17 +9,7 @@
         </svg>
       </div>
       <router-outlet></router-outlet>
-      <div *ngIf="isInHome()" id="asanaConteiner">
-        <div *ngFor="let asa of allAsana" class="asanaCard">
-          <div class="asaName">
-            <p [routerLink]="['detail/',asa.id]" class="ellipsis font-primary">{{ asa.name }}</p>
-          </div>
-          <img [routerLink]="['detail/',asa.id]" [src]="asa.urlImg" alt="" />
-          <!-- <div class="favorite">
-            o
-          </div> -->
-        </div>
-      </div>
+      <app-asana-filtered [positionType]="''" *ngIf="isInHome()"></app-asana-filtered>
     </div>
   </div>
 </div>
