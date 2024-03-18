@@ -14,13 +14,13 @@ export class HeaderComponent implements OnInit {
   username!: string | null;
   admin: boolean = false;
   jwt: JwtHelperService = new JwtHelperService()
+  menuVisibility: boolean = false;
 
   constructor(
     private logSvc: LogSvcService,
     public router: Router) { }
 
   ngOnInit(): void {
-
     this.logSvc.authLog$.subscribe(auth => {
       if (auth) {
         this.loggedIn = true;
@@ -51,5 +51,9 @@ export class HeaderComponent implements OnInit {
   }
   isInSign(): boolean {
     return this.router.url === '/register';
+  }
+
+  removeClassMenuUser(){
+    this.menuVisibility = !this.menuVisibility;
   }
 }

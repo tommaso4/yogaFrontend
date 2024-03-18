@@ -10,6 +10,7 @@ import { BelancePoseComponent } from './pages/balance-pose/belance-pose.componen
 import { MantraComponent } from './pages/mantra/mantra.component';
 import { DetailAsanaComponent } from './pages/detail-asana/detail-asana.component';
 import { PersonalAsanaComponent } from './pages/personal-asana/personal-asana.component';
+import { SliderAsanaComponent } from './pages/slider-asana/slider-asana.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
     {path:'detail/:id', component: DetailAsanaComponent},
     {path: 'myAsana', component: PersonalAsanaComponent},
   ]},
-  {path: 'createAsana', component: CreateAsanaComponent}
+  {path: 'createAsana', component: CreateAsanaComponent},
+  {path: 'sliderAsana', component: SliderAsanaComponent}
 ];
 
 @NgModule({

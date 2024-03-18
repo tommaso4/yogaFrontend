@@ -21,7 +21,35 @@
     font-weight: 500;
     font-size: 18px;
   }
-  .logout:hover {
+  .reverse-arr svg{
+    transform: rotate(180deg);
+  }
+  .arr-header{
     cursor: pointer;
+    color: $azzure;
+    &:hover{
+      transform: scale(1.1);
+    }
+  }
+  #menu-user{
+    display: flex;
+    flex-direction: column;
+    background-color: $azzure;
+    position: absolute;
+    right: 40px;
+    top: 50px;
+    z-index: 10;
+    a{
+      padding: 3px 20px;
+      color: $orange;
+      font-size: large;
+      font-weight: 500;
+
+      &:hover{
+        cursor: pointer;
+        color: white;
+        transform: scale(1.1);
+      }
+    }
   }
 }

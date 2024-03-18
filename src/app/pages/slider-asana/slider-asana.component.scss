@@ -1,0 +1,74 @@
+@import "../../app.component.scss";
+
+#container-slider {
+  position: relative;
+  height: 78vh;
+  width: 40vw;
+  margin: 0 auto;
+  border: 2px solid $azzure;
+
+  #duration {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 0;
+
+    select {
+      width: 50px;
+      background-color: $azzure;
+      option {
+        background-color: $azzure;
+      }
+    }
+    .reset-slider{
+      cursor: pointer;
+    }
+  }
+
+  #slider{
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    p{
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 10;
+    }
+    img{
+      width: 42vw;
+      transform: scale(1.1);
+    }
+  }
+  .no-active{
+    display: none;
+  }
+  .active{
+    display: block;
+  }
+
+  #player-slider {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    padding: 8px 0;
+    background-color: $azzure;
+
+    button[disabled]{
+      border:1px solid transparent;
+      svg{
+        fill: $orange;
+      }
+    }
+
+    svg {
+      fill: white;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

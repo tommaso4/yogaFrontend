@@ -7,7 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateAsanaComponent } from './pages/create-asana/create-asana.component';
 import { StandPoseComponent } from './pages/stand-pose/stand-pose.component';
@@ -21,6 +21,7 @@ import { DetailAsanaComponent } from './pages/detail-asana/detail-asana.componen
 import { PersonalAsanaComponent } from './pages/personal-asana/personal-asana.component';
 import { AsanaFilteredComponent } from './component/asana-filtered/asana-filtered.component';
 import { HeartSvgComponent } from './component/heart-svg/heart-svg.component';
+import { SliderAsanaComponent } from './pages/slider-asana/slider-asana.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { HeartSvgComponent } from './component/heart-svg/heart-svg.component';
     DetailAsanaComponent,
     PersonalAsanaComponent,
     AsanaFilteredComponent,
-    HeartSvgComponent
+    HeartSvgComponent,
+    SliderAsanaComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { HeartSvgComponent } from './component/heart-svg/heart-svg.component';
     ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

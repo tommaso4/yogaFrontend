@@ -1,27 +1,36 @@
 <div id="header">
   <div id="logo" *ngIf="!loggedIn">
     <a routerLink="">
-      <img src="../../../assets/logo.png" alt="logo"/>
+      <img src="../../../assets/logo.png" alt="logo" />
     </a>
   </div>
   <div id="logo" *ngIf="loggedIn">
     <a routerLink="/home">
-      <img src="../../../assets/logo.png" alt="logo"/>
+      <img src="../../../assets/logo.png" alt="logo" />
     </a>
   </div>
-  <div routerLink="/home/myAsana">
-    MyAsana
+  <div routerLink="sliderAsana">
+    slider
   </div>
   <div *ngIf="admin">
     <a routerLink="/createAsana" class="font-primary pe-3">createAsana</a>
     <a routerLink="/createAsana" class="font-primary">deleteUser</a>
   </div>
   <div *ngIf="loggedIn" class="d-flex me-3">
-    <h5 class="pe-3">{{username}}</h5>
-    <a class="logout" (click)="logOut()">Log-out</a>
+    <h5 class="arr-header" (click)="removeClassMenuUser()">{{ username }}</h5>
+    <div class="arr-header" (click)="removeClassMenuUser()" [ngClass]="{'reverse-arr':this.menuVisibility}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"/>
+      </svg>
+    </div>
+    <div id="menu-user" *ngIf="this.menuVisibility">
+      <a routerLink="/home/myAsana" (click)="removeClassMenuUser()"> MyAsana </a>
+      <a routerLink="sliderAsana" (click)="removeClassMenuUser()">FirstSeries </a>
+      <a (click)="logOut()">Log-out</a>
+    </div>
   </div>
   <div *ngIf="!loggedIn" class="me-3 d-flex justify-content-center align-content-center">
-    <a routerLink=""  *ngIf="!isInLog()" class="font-primary">LOG-IN</a>
-    <a routerLink="/register" *ngIf="!isInSign()" class="font-primary">SIGN-IN</a>
+    <a routerLink="" *ngIf="!isInLog()" class="font-primary">LOG-IN</a>
+    <a routerLink="/register" *ngIf="!isInSign()" class="font-primary">SIGN-IN</a >
   </div>
 </div>

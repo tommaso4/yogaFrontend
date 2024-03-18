@@ -48,9 +48,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         throw err;
       })
     ).subscribe()
-    // .subscribe(data => {
-    //   this.allAsana = data.response;
-    // });
   }
 
   isInHome(): boolean {
