@@ -1,3 +1,60 @@
 @import "../../app.component.scss";
 
 
+#asanaConteiner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 30px 1vw 15px 1vw;
+
+  .asanaCard {
+    @media screen and (max-width: 426px) {
+          width: 80vw;
+          margin-bottom: 20px;
+          img {
+            width: inherit;
+            transform: scale(1.1);
+            &:hover {
+              cursor: pointer;
+            }
+          }
+    }
+    background-color: $azzure-bg;
+    border: 2px solid $azzure;
+    width: 30%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 15px;
+
+    .asaName {
+      width: 50%;
+      text-align: center;
+      margin: 10px auto 25px auto;
+      border: 2px solid $azzure;
+      padding: 0 20px;
+      p{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &:hover {
+        p {
+          transform: scale(1.1);
+        }
+        cursor: pointer;
+      }
+    }
+
+    img {
+      width: 100%;
+      transform: scale(1.1);
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+}
+
+

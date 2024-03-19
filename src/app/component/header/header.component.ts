@@ -1,27 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LogSvcService } from '../../services/log-svc.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   loggedIn: boolean = false;
   username!: string | null;
   admin: boolean = false;
   jwt: JwtHelperService = new JwtHelperService()
   menuVisibility: boolean = false;
+  subLoginIn!:Subscription;
 
   constructor(
     private logSvc: LogSvcService,
     public router: Router) { }
 
   ngOnInit(): void {
-    this.logSvc.authLog$.subscribe(auth => {
+  this.menuVisibility= false;
+
+    this.subLoginIn = this.logSvc.authLog$.subscribe(auth => {
       if (auth) {
         this.loggedIn = true;
         this.username = localStorage.getItem('username')
@@ -38,16 +42,20 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
+  ngOnDestroy(): void {
+    if(this.subLoginIn){ this.subLoginIn.unsubscribe()}
+  }
 
   logOut(): void {
     this.admin = false;
     this.username = '';
     this.logSvc.logOut();
-    this.router.navigate(['']);
+    this.router.navigate(['/login']);
+    this.menuVisibility = false;
   }
 
   isInLog(): boolean {
-    return this.router.url === '/';
+    return this.router.url === '/login';
   }
   isInSign(): boolean {
     return this.router.url === '/register';

@@ -2,8 +2,13 @@
   margin: 0 20%;
   height: 100vh;
   padding: 5vh 0;
+  a{
+    text-decoration: none;
+  }
 }
 
-a{
-  text-decoration: none;
+@media screen and (max-width: 426px) {
+  #register{
+    margin: 0 10%;
+  }
 }

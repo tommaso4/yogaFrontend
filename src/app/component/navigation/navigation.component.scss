@@ -1,9 +1,11 @@
 @import "../../app.component.scss";
+
 .sticky {
   position: fixed;
   top: 0;
   z-index: 2;
 }
+
 #navigation {
   display: flex;
   justify-content: space-around;
@@ -20,11 +22,31 @@
     height: 7vh;
     border: 2px solid $azzure;
     margin: 1.5vh 20px;
+
     &:hover {
       cursor: pointer;
+
       p {
         transform: scale(1.1);
       }
+    }
+  }
+}
+
+@media screen and (max-width: 426px) {
+  #navigation {
+    flex-wrap: wrap;
+    width: 100vw;
+    height: inherit;
+    padding: inherit;
+    background-color: $orange;
+    border: 2px solid $azzure;
+
+    .selection {
+      width: 50%;
+      height: 7vh;
+      border: 2px solid $azzure;
+      margin: inherit;
     }
   }
 }

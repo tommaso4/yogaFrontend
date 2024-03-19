@@ -7,7 +7,7 @@
   .detail {
     border: 3px solid $purple;
     display: flex;
-    // flex-direction: column;-----------------------------------------------------
+
     background-color: $carne;
 
     #img-detail {
@@ -39,4 +39,22 @@
 
   }
 
+}
+@media screen and (max-width: 770px) {
+  #cont-detail {
+    .detail {
+      flex-direction: column;
+
+      #img-detail {
+        width: 80vw;
+        height: inherit;
+        border-right: 3px solid  white;
+      }
+      #prop-detail {
+        width: 80vw;
+        height: inherit;
+        overflow: hidden;
+      }
+    }
+  }
 }

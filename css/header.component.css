@@ -179,53 +179,57 @@ table {
   white-space: nowrap;
 }
 
-#cont-detail {
-  box-sizing: border-box;
-  padding: 5vh 0;
-}
-#cont-detail .detail {
-  border: 3px solid rgb(110, 30, 30);
+#header {
   display: flex;
-  background-color: #D89F9F;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(24, 176, 203, 0.3);
+  height: 12vh;
+  padding: 1vh 2vw;
 }
-#cont-detail .detail #img-detail {
-  position: relative;
-  overflow: hidden;
-  width: 40vw;
-  height: 60vh;
-  border-right: 3px solid rgb(110, 30, 30);
+#header #logo img {
+  height: 10vh;
 }
-#cont-detail .detail #img-detail img {
-  width: 100%;
-  transform: scale(1.2);
+#header a {
+  text-decoration: none;
+  color: black;
 }
-#cont-detail .detail #prop-detail {
-  padding: 1vh 1vw;
-  width: 40vw;
-  height: 60vh;
-  overflow-y: scroll;
+#header h5 {
+  font-weight: 500;
+  font-size: 18px;
 }
-#cont-detail .detail #prop-detail h2 {
-  text-align: center;
-  font-weight: bolder;
-  font-size: larger;
+#header .reverse-arr svg {
+  transform: rotate(180deg);
 }
-#cont-detail .detail #prop-detail h4 {
-  font-weight: bold;
+#header .arr-header {
+  cursor: pointer;
+  color: #18B0CB;
 }
-
-@media screen and (max-width: 770px) {
-  #cont-detail .detail {
-    flex-direction: column;
+#header .arr-header:hover {
+  transform: scale(1.1);
+}
+#header #menu-user {
+  display: flex;
+  flex-direction: column;
+  background-color: #18B0CB;
+  position: absolute;
+  right: 40px;
+  top: 50px;
+  z-index: 10;
+}
+@media screen and (max-width: 426px) {
+  #header #menu-user {
+    border: 2px solid white;
   }
-  #cont-detail .detail #img-detail {
-    width: 80vw;
-    height: inherit;
-    border-right: 3px solid white;
-  }
-  #cont-detail .detail #prop-detail {
-    width: 80vw;
-    height: inherit;
-    overflow: hidden;
-  }
-}/*# sourceMappingURL=detail-asana.component.css.map */
+}
+#header #menu-user a {
+  padding: 3px 20px;
+  color: #F8B037;
+  font-size: large;
+  font-weight: 500;
+}
+#header #menu-user a:hover {
+  cursor: pointer;
+  color: white;
+  transform: scale(1.1);
+}/*# sourceMappingURL=header.component.css.map */

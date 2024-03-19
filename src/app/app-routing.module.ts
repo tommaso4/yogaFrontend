@@ -13,7 +13,8 @@ import { PersonalAsanaComponent } from './pages/personal-asana/personal-asana.co
 import { SliderAsanaComponent } from './pages/slider-asana/slider-asana.component';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent },
+  {path: '',pathMatch:'full',redirectTo:'/login'},//-----------
+  {path: 'login', component: LoginComponent },//---------
   {path: 'register', component :RegisterComponent},
   {path: 'home', component: HomeComponent,children:[
     {path:'standPose',component: StandPoseComponent},

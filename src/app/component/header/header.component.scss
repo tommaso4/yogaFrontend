@@ -17,21 +17,26 @@
     color: black;
 
   }
-  h5{
+
+  h5 {
     font-weight: 500;
     font-size: 18px;
   }
-  .reverse-arr svg{
+
+  .reverse-arr svg {
     transform: rotate(180deg);
   }
-  .arr-header{
+
+  .arr-header {
     cursor: pointer;
     color: $azzure;
-    &:hover{
+
+    &:hover {
       transform: scale(1.1);
     }
   }
-  #menu-user{
+
+  #menu-user {
     display: flex;
     flex-direction: column;
     background-color: $azzure;
@@ -39,13 +44,18 @@
     right: 40px;
     top: 50px;
     z-index: 10;
-    a{
+
+    @media screen and (max-width: 426px) {
+      border: 2px solid white;
+    }
+
+    a {
       padding: 3px 20px;
       color: $orange;
       font-size: large;
       font-weight: 500;
 
-      &:hover{
+      &:hover {
         cursor: pointer;
         color: white;
         transform: scale(1.1);

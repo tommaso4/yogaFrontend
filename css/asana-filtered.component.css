@@ -179,53 +179,55 @@ table {
   white-space: nowrap;
 }
 
-#cont-detail {
-  box-sizing: border-box;
-  padding: 5vh 0;
-}
-#cont-detail .detail {
-  border: 3px solid rgb(110, 30, 30);
+#asanaConteiner {
   display: flex;
-  background-color: #D89F9F;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 30px 1vw 15px 1vw;
 }
-#cont-detail .detail #img-detail {
-  position: relative;
+#asanaConteiner .asanaCard {
+  background-color: rgba(24, 176, 203, 0.3);
+  border: 2px solid #18B0CB;
+  width: 30%;
   overflow: hidden;
-  width: 40vw;
-  height: 60vh;
-  border-right: 3px solid rgb(110, 30, 30);
+  position: relative;
+  margin-bottom: 15px;
 }
-#cont-detail .detail #img-detail img {
-  width: 100%;
-  transform: scale(1.2);
+@media screen and (max-width: 426px) {
+  #asanaConteiner .asanaCard {
+    width: 80vw;
+    margin-bottom: 20px;
+  }
+  #asanaConteiner .asanaCard img {
+    width: inherit;
+    transform: scale(1.1);
+  }
+  #asanaConteiner .asanaCard img:hover {
+    cursor: pointer;
+  }
 }
-#cont-detail .detail #prop-detail {
-  padding: 1vh 1vw;
-  width: 40vw;
-  height: 60vh;
-  overflow-y: scroll;
-}
-#cont-detail .detail #prop-detail h2 {
+#asanaConteiner .asanaCard .asaName {
+  width: 50%;
   text-align: center;
-  font-weight: bolder;
-  font-size: larger;
+  margin: 10px auto 25px auto;
+  border: 2px solid #18B0CB;
+  padding: 0 20px;
 }
-#cont-detail .detail #prop-detail h4 {
-  font-weight: bold;
+#asanaConteiner .asanaCard .asaName p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-
-@media screen and (max-width: 770px) {
-  #cont-detail .detail {
-    flex-direction: column;
-  }
-  #cont-detail .detail #img-detail {
-    width: 80vw;
-    height: inherit;
-    border-right: 3px solid white;
-  }
-  #cont-detail .detail #prop-detail {
-    width: 80vw;
-    height: inherit;
-    overflow: hidden;
-  }
-}/*# sourceMappingURL=detail-asana.component.css.map */
+#asanaConteiner .asanaCard .asaName:hover {
+  cursor: pointer;
+}
+#asanaConteiner .asanaCard .asaName:hover p {
+  transform: scale(1.1);
+}
+#asanaConteiner .asanaCard img {
+  width: 100%;
+  transform: scale(1.1);
+}
+#asanaConteiner .asanaCard img:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=asana-filtered.component.css.map */
