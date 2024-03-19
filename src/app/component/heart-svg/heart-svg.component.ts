@@ -25,6 +25,7 @@ export class HeartSvgComponent {
       catchError(err =>{
         throw err;
       })).subscribe()
+      this.unsubscribeAddAsana.unsubscribe()
   }
 
   removeToFavorite():void{
@@ -33,6 +34,7 @@ export class HeartSvgComponent {
         throw err;
       })
     ).subscribe()
+    this.unsubscribeRemoveAsana.unsubscribe()
   }
 
   isFavorited():boolean{

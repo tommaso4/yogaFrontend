@@ -9,27 +9,34 @@ import { AsanaSvcService } from '../../services/asana-svc.service';
   templateUrl: './asana-filtered.component.html',
   styleUrl: './asana-filtered.component.scss'
 })
-export class AsanaFilteredComponent implements OnInit , OnDestroy {
+export class AsanaFilteredComponent implements OnInit, OnDestroy {
 
   @Input() positionType: string = '';
-  myAsana! :IAsana[]| undefined;
+  myAsana!: IAsana[] | undefined;
   unsubscribeAsana!: Subscription;
+  unsubscribeFavorite!: Subscription;
 
   constructor(
     private asanaSvc: AsanaSvcService,
-    private router : Router
-    ){}
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-      this.unsubscribeAsana =this.asanaSvc.allAsana$.subscribe(data=>{
-        if(this.router.url === '/home'){
+    if (this.router.url === '/home/myAsana') {
+      this.unsubscribeFavorite = this.asanaSvc.favorite$.subscribe(asa=>{this.myAsana =asa});
+    } else {
+      this.unsubscribeAsana = this.asanaSvc.allAsana$.subscribe(data => {
+        if (this.router.url === '/home') {
           this.myAsana = data
-        } else{
-          this.myAsana = data?.filter(asana=>asana.typeAsana=== this.positionType)
-        }})
+        } else {
+          this.myAsana = data?.filter(asana => asana.typeAsana === this.positionType)
+        }
+      })
+    }
   }
 
   ngOnDestroy(): void {
-    if(this.unsubscribeAsana)this.unsubscribeAsana.unsubscribe();
+    if (this.unsubscribeAsana) this.unsubscribeAsana.unsubscribe();
+    if (this.unsubscribeFavorite) this.unsubscribeFavorite.unsubscribe();
   }
 }

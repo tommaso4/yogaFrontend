@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Iregister } from '../modules/Iregister';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { ILogin } from '../modules/ilogin';
-import { Iresponse } from '../modules/Iresponse';
+import { IUserLogin } from '../modules/IUserLogin';
+import { IresponseToken } from '../modules/IresponseToken';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { IUserRegister } from '../modules/IUserRegister';
 
 @Injectable({
   providedIn: 'root'
@@ -22,12 +22,12 @@ export class LogSvcService {
     public http: HttpClient,
     ) { }
 
-  register(user:Iregister): Observable<Iresponse> {
-    return this.http.post<Iresponse>(this.signInUrl,user)
+  register(user:IUserRegister): Observable<IresponseToken> {
+    return this.http.post<IresponseToken>(this.signInUrl,user)
   }
 
-  login(user:ILogin): Observable<Iresponse>{
-    return this.http.post<Iresponse>(this.logInUrl, user)
+  login(user:IUserLogin): Observable<IresponseToken>{
+    return this.http.post<IresponseToken>(this.logInUrl, user)
     .pipe(tap((data) =>{
       const token = data.response
       localStorage.setItem('token',token)
@@ -37,7 +37,6 @@ export class LogSvcService {
       localStorage.setItem('role',role)
       let id = this.jwt.decodeToken(token).idUser;
       localStorage.setItem('idUser',id)
-      console.log(id);
       this.isLoggedIn.next(true)
     }))
   }

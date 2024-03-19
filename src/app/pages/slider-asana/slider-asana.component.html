@@ -4,12 +4,8 @@
       <label class="pe-2">Duration: </label>
       <select [(ngModel)]="selectedValue">
         <option disabled selected hidden value="">Select Duration</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
         <option value="3">3</option>
-        <option value="4">4</option>
         <option value="5">5</option>
-        <option value="6">6</option>
         <option value="7">7</option>
       </select>
      </div>
@@ -19,6 +15,7 @@
       <div *ngFor="let asa of allAsana; let i = index" [ngClass]="{'active': courrentIndex === i}" class="no-active">
         <p>{{asa.name}}</p>
         <img [src]="asa.urlImg" alt="img">
+        <app-heart-svg [asanaId]="asa.id" [asana]="asa"></app-heart-svg>
       </div>
     </div>
     <div id="player-slider">

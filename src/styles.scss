@@ -20,14 +20,10 @@ $text-primary: (
   color: rgb(33, 35, 84)
 );
 $carne: #D89F9F;
-$carne1: #e5d2bc;
 $purple: rgb(110, 30, 30);
-$orange1: rgba(255, 137, 19, 0.4);
 $orange: #F8B037;
-$blue-primary: rgba(43, 105, 240, 0.75);
 $azzure: #18B0CB;
-$azzure-bg2: rgba(80, 197, 218, 0.603);
-$azzure-bg: rgba(24, 176, 203, 0.25);
+$azzure-bg: rgba(24, 176, 203, 0.3);
 
 .font-primary {
   @each $property, $value in $text-primary {
@@ -37,6 +33,8 @@ $azzure-bg: rgba(24, 176, 203, 0.25);
 
 html {
   overflow-y: scroll;
+  background-color: $azzure-bg;
+
   ::-webkit-scrollbar {
     width: 12px;
     border: 1px  solid $azzure-bg;

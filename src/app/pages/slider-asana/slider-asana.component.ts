@@ -16,6 +16,7 @@ export class SliderAsanaComponent implements OnInit, OnDestroy {
   selectedValue: string | undefined = undefined;
   playingIntervall!: any;
   subSliderAsa!: Subscription;
+  synth = window.speechSynthesis;
 
   constructor(
     private asanaSvc: AsanaSvcService
@@ -23,8 +24,13 @@ export class SliderAsanaComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subSliderAsa = this.asanaSvc.getAllAsana().pipe().subscribe(data => {
-      this.allAsana = data.response
-    })
+  this.allAsana = data.response
+})
+
+    // this.asanaSvc.allAsana$.subscribe(asana => {
+    //   this.allAsana = asana
+    //   this.allAsana?.sort((a, b) => (a.id - b.id))
+    // })
   }
 
   ngOnDestroy(): void {
@@ -35,26 +41,33 @@ export class SliderAsanaComponent implements OnInit, OnDestroy {
   nextSlide() {
     if (this.courrentIndex >= 41) {
       this.courrentIndex = 0;
-    } else this.courrentIndex++;
+    } else {
+      this.courrentIndex++;
+      this.speakAsanaName()
+    }
   }
 
   prevSlide() {
     if (this.courrentIndex === 0) {
       this.courrentIndex = 41
-    } else this.courrentIndex--;
+    } else {
+      this.courrentIndex--;
+      this.speakAsanaName()
+    }
   }
 
   play() {
     if (this.selectedValue != undefined) {
+      this.speakAsanaName()
       this.isPlaying = true;
       this.playingIntervall = setInterval(() => {
         this.nextSlide();
       }, parseInt(this.selectedValue) * 1000)
     }
   }
+
   stop() {
     this.isPlaying = false;
-
     clearInterval(this.playingIntervall)
   }
 
@@ -63,10 +76,17 @@ export class SliderAsanaComponent implements OnInit, OnDestroy {
     this.selectedValue = undefined;
     this.stop()
   }
+  speakAsanaName() {
+    if (this.allAsana && this.allAsana[this.courrentIndex]) {
+      const asanaName = this.allAsana[this.courrentIndex].name;
+      const synth = window.speechSynthesis;
+      let voices = synth.getVoices()
+      const utterance = new SpeechSynthesisUtterance(asanaName);
+      utterance.pitch = 0;
+      utterance.voice = voices[87]
+      synth.speak(utterance);
+    }
+  }
 }
 
-// this.asanaSvc.allAsana$.subscribe(asana => {
-//   this.allAsana = asana
-//   this.allAsana?.sort((a, b) => (a.id - b.id))
-// })
 
