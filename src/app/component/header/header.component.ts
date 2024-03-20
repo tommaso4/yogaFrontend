@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { LogSvcService } from '../../services/log-svc.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
@@ -44,6 +44,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     if(this.subLoginIn){ this.subLoginIn.unsubscribe()}
+    document.removeEventListener('click', this.onClick);
   }
 
   logOut(): void {
@@ -51,7 +52,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.username = '';
     this.logSvc.logOut();
     this.router.navigate(['/login']);
-    this.menuVisibility = false;
+    this.removeClassMenuUser();
   }
 
   isInLog(): boolean {
@@ -64,4 +65,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   removeClassMenuUser(){
     this.menuVisibility = !this.menuVisibility;
   }
+  @HostListener('document:click', ['$event'])
+  onClick(event: MouseEvent) {
+    if ((event.target instanceof HTMLElement && !event.target.closest('#menu-user') && !event.target.closest('.arr-header'))) {
+      this.menuVisibility = false;  }
+  }
+
 }

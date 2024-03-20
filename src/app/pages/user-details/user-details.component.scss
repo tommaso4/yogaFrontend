@@ -1,0 +1,16 @@
+@import '../../app.component.scss';
+.delete-user{
+  margin-top: 10vh;
+  width: 40vw;
+  padding: 15px 20px;
+  background-color: $azzure-bg;
+  button{
+    margin-top: 25px;
+    margin-right: 25px;
+  }
+}
+@media screen and (max-width: 426px) {
+  .delete-user{
+    width: 80vw;
+}
+}

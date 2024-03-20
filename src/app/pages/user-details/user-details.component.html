@@ -1,0 +1,14 @@
+<div class="delete-user" *ngIf="!confirmDelete && !deletedUser">
+  <span class="font-primary">Id: </span><span class="font-primary">{{idUser}}</span><br>
+  <span class="font-primary">User Name: </span><span class="font-primary">{{userName}}</span><br>
+  <span class="font-primary">Role: </span> <span class="font-primary">{{role}}</span><br>
+  <button (click)="changeConfirmDelete()" class="btn btn-danger font-primary text-white">Delete User</button>
+</div>
+<div class="delete-user" *ngIf="confirmDelete && !deletedUser">
+  <p class="font-primary text-danger fw-bolder">Do you confirm to delete {{userName}} client?</p>
+  <button (click)="deleteUser()" class="btn btn-danger">Delete</button>
+  <button (click)="changeConfirmDelete()" class="btn btn-primary" >Cancel</button>
+</div>
+<div *ngIf="deletedUser" class="delete-user">
+  <p class="font-primary fw-bolder text-primary">UserName: {{userName}} deleted with success </p>
+</div>

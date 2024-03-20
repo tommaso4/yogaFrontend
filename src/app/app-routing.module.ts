@@ -1,9 +1,8 @@
 import { HomeComponent } from './pages/home/home.component';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
-import { CreateAsanaComponent } from './pages/create-asana/create-asana.component';
 import { StandPoseComponent } from './pages/stand-pose/stand-pose.component';
 import { SitPoseComponent } from './pages/sit-pose/sit-pose.component';
 import { BelancePoseComponent } from './pages/balance-pose/belance-pose.component';
@@ -12,6 +11,7 @@ import { DetailAsanaComponent } from './pages/detail-asana/detail-asana.componen
 import { PersonalAsanaComponent } from './pages/personal-asana/personal-asana.component';
 import { SliderAsanaComponent } from './pages/slider-asana/slider-asana.component';
 import { AuthGuardGuard } from './guard/auth-guard.guard';
+import { UserDetailsComponent } from './pages/user-details/user-details.component';
 
 const routes: Routes = [
   {path: '',pathMatch:'full',redirectTo:'/login'},
@@ -24,9 +24,10 @@ const routes: Routes = [
     {path:'mantra',component:MantraComponent},
     {path:'detail/:id', component: DetailAsanaComponent},
     {path: 'myAsana', component: PersonalAsanaComponent},
+    {path: 'userDetail', component: UserDetailsComponent},
   ],canActivate:[AuthGuardGuard]},
-  {path: 'createAsana', component: CreateAsanaComponent},
-  {path: 'sliderAsana', component: SliderAsanaComponent}
+  {path: 'sliderAsana', component: SliderAsanaComponent},
+  { path: 'managementAsana', loadChildren: () => import('./management-asana/management-asana.module').then(m => m.ManagementAsanaModule) },
 ];
 
 @NgModule({

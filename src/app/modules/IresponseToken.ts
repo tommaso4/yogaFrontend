@@ -1,4 +1,3 @@
-import { IAsana } from "./IAsana";
 
 export interface IresponseToken {
   dateTime:string;

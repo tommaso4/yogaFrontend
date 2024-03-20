@@ -41,9 +41,10 @@ export class RegisterComponent implements OnInit {
       this.loading = false;
       console.log(err);
       throw err;
-    })).subscribe(data=>{
-      console.log(data)
-      this.router.navigate(['']);
+    })).subscribe(()=>{
+      alert('user with username: '+ this.form.value.username + 'created successfully')
+      this.router.navigate(['/login']);
+
     })
   }
   isValid(nameForm:string):boolean|undefined{

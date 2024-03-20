@@ -10,8 +10,7 @@
     </a>
   </div>
   <div *ngIf="admin">
-    <a routerLink="/createAsana" class="font-primary pe-3">createAsana</a>
-    <a routerLink="/createAsana" class="font-primary">deleteUser</a>
+    <a routerLink="/managementAsana" class="font-primary pe-3">Managment</a>
   </div>
   <div *ngIf="loggedIn" class="d-flex me-3">
     <h5 class="arr-header" (click)="removeClassMenuUser()">{{ username }}</h5>
@@ -23,6 +22,7 @@
     <div id="menu-user" *ngIf="this.menuVisibility">
       <a routerLink="/home/myAsana" (click)="removeClassMenuUser()"> MyAsana </a>
       <a routerLink="/sliderAsana" (click)="removeClassMenuUser()">FirstSeries </a>
+      <a routerLink="/home/userDetail" (click)="removeClassMenuUser()">UserDetail </a>
       <a (click)="logOut()">Log-out</a>
     </div>
   </div>

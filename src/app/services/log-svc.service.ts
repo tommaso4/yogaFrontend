@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { IUserLogin } from '../modules/IUserLogin';
@@ -13,6 +13,7 @@ export class LogSvcService {
 
   signInUrl: string = "http://localhost:8080/auth/register";
   logInUrl: string = "http://localhost:8080/auth/login";
+  deleteUserUrl: string = "http://localhost:8080/user/delete/";
 
   isLoggedIn :BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   authLog$ = this.isLoggedIn.asObservable();
@@ -52,5 +53,20 @@ export class LogSvcService {
     let token = localStorage.getItem('token');
     if(token) this.isLoggedIn.next(true)
     else  this.isLoggedIn.next(false)
+  }
+
+  deleteUser(idUser:string):Observable<any>{
+    const header = this.getHeaders();
+    return this.http.delete(this.deleteUserUrl+idUser, {headers: header})
+  }
+
+  getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const header = new HttpHeaders({
+        'Authorization': 'Bearer ' + token
+      });
+      return header
+    } else return new HttpHeaders()
   }
 }

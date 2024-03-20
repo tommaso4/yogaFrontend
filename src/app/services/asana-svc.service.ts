@@ -63,7 +63,6 @@ export class AsanaSvcService {
     return this.http.patch<IResponseUser>(this.patchRemoveAsanaToUser + idAsana + '/' + idUser, {}, { headers: header })
   }
 
-
   removeToArrFavorite(asana: IAsana) {
     let sub: Subscription = this.favorite$.subscribe(data => { this.favoriteAsanas = data })
     if (this.favoriteAsanas)

@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.subLogin = this.logSvc.login(this.form.value).pipe(
       catchError(err => {
-        console.error(err);
         this.errorStatus = true;
         this.error = err.error.message;
         this.loading = false;
@@ -52,7 +51,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         let role: string | null = this.jwt.decodeToken(token).role;
         if (role) {
           if (role === 'ADMIN') {
-            this.router.navigate(['/createAsana']);
+            this.router.navigate(['/managementAsana']);
           } else if (role === 'CLIENT') {
             this.router.navigate(['/home']);
           }
