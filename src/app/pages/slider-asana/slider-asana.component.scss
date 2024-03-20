@@ -72,3 +72,21 @@
     }
   }
 }
+@media screen and (max-width: 426px) {
+  #container-slider {
+    width: 100vw;
+    #slider{
+      height: 67vh;
+      img{
+        position: absolute;
+        bottom: 11vh;
+        width: 100vw;
+        height: 56vh;
+      }
+    }
+    #player-slider {
+      height: 11vh;//...
+      padding: 3px 0;//....
+    }
+  }
+}

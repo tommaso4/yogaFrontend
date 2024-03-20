@@ -11,10 +11,11 @@ import { MantraComponent } from './pages/mantra/mantra.component';
 import { DetailAsanaComponent } from './pages/detail-asana/detail-asana.component';
 import { PersonalAsanaComponent } from './pages/personal-asana/personal-asana.component';
 import { SliderAsanaComponent } from './pages/slider-asana/slider-asana.component';
+import { AuthGuardGuard } from './guard/auth-guard.guard';
 
 const routes: Routes = [
-  {path: '',pathMatch:'full',redirectTo:'/login'},//-----------
-  {path: 'login', component: LoginComponent },//---------
+  {path: '',pathMatch:'full',redirectTo:'/login'},
+  {path: 'login', component: LoginComponent },
   {path: 'register', component :RegisterComponent},
   {path: 'home', component: HomeComponent,children:[
     {path:'standPose',component: StandPoseComponent},
@@ -23,7 +24,7 @@ const routes: Routes = [
     {path:'mantra',component:MantraComponent},
     {path:'detail/:id', component: DetailAsanaComponent},
     {path: 'myAsana', component: PersonalAsanaComponent},
-  ]},
+  ],canActivate:[AuthGuardGuard]},
   {path: 'createAsana', component: CreateAsanaComponent},
   {path: 'sliderAsana', component: SliderAsanaComponent}
 ];

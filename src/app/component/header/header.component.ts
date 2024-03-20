@@ -26,11 +26,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   this.menuVisibility= false;
 
     this.subLoginIn = this.logSvc.authLog$.subscribe(auth => {
+
       if (auth) {
-        this.loggedIn = true;
+        this.loggedIn = auth;
         this.username = localStorage.getItem('username')
         let role = localStorage.getItem('role')
-
         if (role === "ADMIN") {
           this.admin = true;
         }
@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.admin = false;
         }
       } else {
-        this.loggedIn = false;
+        this.loggedIn = auth;
       }
     });
   }

@@ -20,7 +20,7 @@ export class LogSvcService {
 
   constructor(
     public http: HttpClient,
-    ) { }
+    ) {this.isLogged()}
 
   register(user:IUserRegister): Observable<IresponseToken> {
     return this.http.post<IresponseToken>(this.signInUrl,user)
@@ -41,12 +41,16 @@ export class LogSvcService {
     }))
   }
 
-
   logOut():void{
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     localStorage.removeItem('role');
     localStorage.removeItem('idUser');
     this.isLoggedIn.next(false)
+  }
+  isLogged(){
+    let token = localStorage.getItem('token');
+    if(token) this.isLoggedIn.next(true)
+    else  this.isLoggedIn.next(false)
   }
 }
