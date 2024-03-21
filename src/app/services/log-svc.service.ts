@@ -1,64 +1,91 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { Injectable, OnDestroy, OnInit} from '@angular/core';
+import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 import { IUserLogin } from '../modules/IUserLogin';
 import { IresponseToken } from '../modules/IresponseToken';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { IUserRegister } from '../modules/IUserRegister';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LogSvcService {
+export class LogSvcService implements OnDestroy {
 
   signInUrl: string = "http://localhost:8080/auth/register";
   logInUrl: string = "http://localhost:8080/auth/login";
   deleteUserUrl: string = "http://localhost:8080/user/delete/";
 
-  isLoggedIn :BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   authLog$ = this.isLoggedIn.asObservable();
   jwt: JwtHelperService = new JwtHelperService()
+  logOutTimer: any;
+  subAuth!: Subscription;
 
   constructor(
-    public http: HttpClient,
-    ) {this.isLogged()}
+    private http: HttpClient,
+    private router : Router
+  ) {
 
-  register(user:IUserRegister): Observable<IresponseToken> {
-    return this.http.post<IresponseToken>(this.signInUrl,user)
+    this.isLogged()
+    this.startLogoutTimer()
+    this.setupEventListeners()
+    this.setWindowCloseListener()
   }
 
-  login(user:IUserLogin): Observable<IresponseToken>{
+  ngOnDestroy(): void {
+    this.removeEventListeners();
+    if(this.subAuth)this.subAuth.unsubscribe();
+  }
+
+  setWindowCloseListener(){
+    window.addEventListener('beforeunload',()=>{
+      this.logOut()
+    })
+  }
+
+  register(user: IUserRegister): Observable<IresponseToken> {
+    return this.http.post<IresponseToken>(this.signInUrl, user)
+  }
+
+  login(user: IUserLogin): Observable<IresponseToken> {
     return this.http.post<IresponseToken>(this.logInUrl, user)
-    .pipe(tap((data) =>{
-      const token = data.response
-      localStorage.setItem('token',token)
-      let username = this.jwt.decodeToken(token).username;
-      localStorage.setItem('username',username)
-      let role = this.jwt.decodeToken(token).role;
-      localStorage.setItem('role',role)
-      let id = this.jwt.decodeToken(token).idUser;
-      localStorage.setItem('idUser',id)
-      this.isLoggedIn.next(true)
-    }))
+      .pipe(tap((data) => {
+        const token = data.response
+        localStorage.setItem('token', token)
+        let username = this.jwt.decodeToken(token).username;
+        localStorage.setItem('username', username)
+        let role = this.jwt.decodeToken(token).role;
+        localStorage.setItem('role', role)
+        let id = this.jwt.decodeToken(token).idUser;
+        localStorage.setItem('idUser', id)
+        this.isLoggedIn.next(true)
+      }))
   }
 
-  logOut():void{
+  deleteUser(idUser: string): Observable<any> {
+    const header = this.getHeaders();
+    return this.http.delete(this.deleteUserUrl + idUser, { headers: header })
+  }
+
+  logOut(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     localStorage.removeItem('role');
     localStorage.removeItem('idUser');
     this.isLoggedIn.next(false)
+    this.router.navigate(['/login']);
   }
-  isLogged(){
+  isLogged() {
     let token = localStorage.getItem('token');
-    if(token) this.isLoggedIn.next(true)
-    else  this.isLoggedIn.next(false)
+    if (token) {
+      this.isLoggedIn.next(true);
+    }
+    else this.isLoggedIn.next(false)
   }
 
-  deleteUser(idUser:string):Observable<any>{
-    const header = this.getHeaders();
-    return this.http.delete(this.deleteUserUrl+idUser, {headers: header})
-  }
+
+
 
   getHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');
@@ -67,6 +94,30 @@ export class LogSvcService {
         'Authorization': 'Bearer ' + token
       });
       return header
-    } else return new HttpHeaders()
+    } else return new HttpHeaders();
+  }
+
+  startLogoutTimer() {
+    this.subAuth = this.authLog$.subscribe(auth => {
+      if(auth){
+        this.logOutTimer = setTimeout(() => this.logOut(),  3600000)
+      }})
+  }
+
+  private setupEventListeners() {
+    window.addEventListener('mousemove',()=> this.resetLogoutTimer());
+    window.addEventListener('keypress', ()=> this.resetLogoutTimer());
+  }
+
+  private removeEventListeners() {
+    window.removeEventListener('mousemove', ()=> this.resetLogoutTimer());
+    window.removeEventListener('keypress', ()=> this.resetLogoutTimer());
+  }
+
+  private resetLogoutTimer() {
+    if (this.logOutTimer) {
+      clearTimeout(this.logOutTimer);
+      this.startLogoutTimer();
+    }
   }
 }

@@ -45,14 +45,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if(this.subLoginIn){ this.subLoginIn.unsubscribe()}
     document.removeEventListener('click', this.onClick);
-  }
+    }
 
   logOut(): void {
     this.admin = false;
     this.username = '';
-    this.logSvc.logOut();
-    this.router.navigate(['/login']);
     this.removeClassMenuUser();
+    this.logSvc.logOut();
   }
 
   isInLog(): boolean {
