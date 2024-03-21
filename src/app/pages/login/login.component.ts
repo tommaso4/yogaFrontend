@@ -1,3 +1,4 @@
+import { GeneralMetodService } from './../../services/general-metod.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LogSvcService } from '../../services/log-svc.service';
@@ -19,9 +20,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   subLogin!: Subscription;
 
   constructor(
-    public formBuilder: FormBuilder,
-    public logSvc: LogSvcService,
-    public router: Router
+    private formBuilder: FormBuilder,
+    private logSvc: LogSvcService,
+    private router: Router,
+    private generalMethod: GeneralMetodService
   ) { }
 
 
@@ -61,15 +63,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
 
-  isValid(nameForm: string): boolean | undefined {
-    return this.form.get(nameForm)?.valid
-  }
-
-  isTouched(nameForm: string): boolean | undefined {
-    return this.form.get(nameForm)?.touched
-  }
-
   isValidAndTouched(nameForm: string): boolean | undefined {
-    return !this.isValid(nameForm) && this.isTouched(nameForm)
+    return this.generalMethod.isValidAndTouched(nameForm, this.form)
   }
 }

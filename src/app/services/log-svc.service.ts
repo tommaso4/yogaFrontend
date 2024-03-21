@@ -1,5 +1,5 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable, OnDestroy, OnInit} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 import { IUserLogin } from '../modules/IUserLogin';
 import { IresponseToken } from '../modules/IresponseToken';
@@ -14,7 +14,6 @@ export class LogSvcService implements OnDestroy {
 
   signInUrl: string = "http://localhost:8080/auth/register";
   logInUrl: string = "http://localhost:8080/auth/login";
-  deleteUserUrl: string = "http://localhost:8080/user/delete/";
 
   isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   authLog$ = this.isLoggedIn.asObservable();
@@ -24,7 +23,7 @@ export class LogSvcService implements OnDestroy {
 
   constructor(
     private http: HttpClient,
-    private router : Router
+    private router: Router,
   ) {
 
     this.isLogged()
@@ -35,14 +34,9 @@ export class LogSvcService implements OnDestroy {
 
   ngOnDestroy(): void {
     this.removeEventListeners();
-    if(this.subAuth)this.subAuth.unsubscribe();
+    if (this.subAuth) this.subAuth.unsubscribe();
   }
 
-  setWindowCloseListener(){
-    window.addEventListener('beforeunload',()=>{
-      this.logOut()
-    })
-  }
 
   register(user: IUserRegister): Observable<IresponseToken> {
     return this.http.post<IresponseToken>(this.signInUrl, user)
@@ -63,11 +57,6 @@ export class LogSvcService implements OnDestroy {
       }))
   }
 
-  deleteUser(idUser: string): Observable<any> {
-    const header = this.getHeaders();
-    return this.http.delete(this.deleteUserUrl + idUser, { headers: header })
-  }
-
   logOut(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
@@ -84,34 +73,22 @@ export class LogSvcService implements OnDestroy {
     else this.isLoggedIn.next(false)
   }
 
-
-
-
-  getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const header = new HttpHeaders({
-        'Authorization': 'Bearer ' + token
-      });
-      return header
-    } else return new HttpHeaders();
-  }
-
   startLogoutTimer() {
     this.subAuth = this.authLog$.subscribe(auth => {
-      if(auth){
-        this.logOutTimer = setTimeout(() => this.logOut(),  3600000)
-      }})
+      if (auth) {
+        this.logOutTimer = setTimeout(() => this.logOut(), 3600000)
+      }
+    })
   }
 
   private setupEventListeners() {
-    window.addEventListener('mousemove',()=> this.resetLogoutTimer());
-    window.addEventListener('keypress', ()=> this.resetLogoutTimer());
+    window.addEventListener('mousemove', () => this.resetLogoutTimer());
+    window.addEventListener('keypress', () => this.resetLogoutTimer());
   }
 
   private removeEventListeners() {
-    window.removeEventListener('mousemove', ()=> this.resetLogoutTimer());
-    window.removeEventListener('keypress', ()=> this.resetLogoutTimer());
+    window.removeEventListener('mousemove', () => this.resetLogoutTimer());
+    window.removeEventListener('keypress', () => this.resetLogoutTimer());
   }
 
   private resetLogoutTimer() {
@@ -119,5 +96,10 @@ export class LogSvcService implements OnDestroy {
       clearTimeout(this.logOutTimer);
       this.startLogoutTimer();
     }
+  }
+  setWindowCloseListener() {
+    window.addEventListener('beforeunload', () => {
+      this.logOut()
+    })
   }
 }

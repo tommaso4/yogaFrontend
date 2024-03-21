@@ -1,9 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 import { IAsana } from '../modules/IAsana';
 import { IResponseDataAsana } from '../modules/IResponseDataAsana';
 import { IResponseUser } from '../modules/IResponseUser';
+import { GeneralMetodService } from './general-metod.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,18 +23,20 @@ export class AsanaSvcService {
   favoriteAsanaBvr: BehaviorSubject<IAsana[] | undefined> = new BehaviorSubject<IAsana[] | undefined>(undefined)
   favorite$ = this.favoriteAsanaBvr.asObservable()
 
-  constructor(private http: HttpClient,
+  constructor(
+    private http: HttpClient,
+    private generalMethods: GeneralMetodService
   ) { }
 
   getAllAsana(): Observable<IResponseDataAsana> {
-    const header = this.getHeaders();
+    const header = this.generalMethods.getHeaders()
     return this.http.get<IResponseDataAsana>(this.getAllAsanaUrl, { headers: header }).pipe(tap(data => {
       this.allAsanaBvr.next(data.response)
     }))
   }
 
   getUser(): Observable<IResponseUser> {
-    const header = this.getHeaders();
+    const header = this.generalMethods.getHeaders()
     let id: string | null = localStorage.getItem('idUser')
     return this.http.get<IResponseUser>(this.getSingleUserUrl + id, { headers: header }).pipe(tap(data => {
       this.favoriteAsanas = data.response.asana;
@@ -42,7 +45,7 @@ export class AsanaSvcService {
   }
 
   addTofavorites(idAsana: string, asana: IAsana): Observable<IResponseUser> {
-    const header = this.getHeaders();
+    const header = this.generalMethods.getHeaders()
     this.addToArrFavorite(asana)
     let idUser = localStorage.getItem('idUser')
     return this.http.patch<IResponseUser>(this.patchAsanaToUser + idAsana + '/' + idUser, {}, { headers: header })
@@ -57,7 +60,7 @@ export class AsanaSvcService {
   }
 
   removeToFavorite(idAsana: string, asana: IAsana): Observable<IResponseUser> {
-    const header = this.getHeaders();
+    const header = this.generalMethods.getHeaders()
     this.removeToArrFavorite(asana)
     let idUser = localStorage.getItem('idUser')
     return this.http.patch<IResponseUser>(this.patchRemoveAsanaToUser + idAsana + '/' + idUser, {}, { headers: header })
@@ -75,15 +78,5 @@ export class AsanaSvcService {
     if (this.favoriteAsanas)
       return this.favoriteAsanas.some(asa => asa.id === asana.id);
     else return false
-  }
-
-  getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const header = new HttpHeaders({
-        'Authorization': 'Bearer ' + token
-      });
-      return header
-    } else return new HttpHeaders()
   }
 }

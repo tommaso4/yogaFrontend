@@ -1,0 +1,10 @@
+@import '../../app.component.scss';
+.delete-asana{
+  margin: 30px 10%;
+  background-color: $azzure-bg;
+  padding: 10px;
+  input{
+    width: 200px;
+    margin: 10px 0;
+  }
+}

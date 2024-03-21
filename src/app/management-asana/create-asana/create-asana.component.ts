@@ -4,6 +4,7 @@ import { Subscription, catchError } from 'rxjs';
 import { ManagementAsanaComponent } from '../management-asana.component';
 import { ManagementSvcService } from '../../services/management-svc.service';
 import { IAsana } from '../../modules/IAsana';
+import { GeneralMetodService } from '../../services/general-metod.service';
 
 @Component({
   selector: 'app-create-asana',
@@ -19,7 +20,8 @@ export class CreateAsanaComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private managemntSvc: ManagementSvcService
+    private managemntSvc: ManagementSvcService,
+    private generalMethod: GeneralMetodService
   ) { }
 
   ngOnInit(): void {
@@ -34,8 +36,6 @@ export class CreateAsanaComponent implements OnInit, OnDestroy {
     })
   }
   submit() {
-    console.log(this.form.value);
-
     this.subCreateAsana = this.managemntSvc.createAsana(this.form.value).pipe(
       catchError(err => {
         this.errorStatus = true;
@@ -56,16 +56,8 @@ export class CreateAsanaComponent implements OnInit, OnDestroy {
     if (this.subCreateAsana) this.subCreateAsana.unsubscribe()
   }
 
-  isValid(nameForm: string): boolean | undefined {
-    return this.form.get(nameForm)?.valid
-  }
-
-  isTouched(nameForm: string): boolean | undefined {
-    return this.form.get(nameForm)?.touched
-  }
-
   isValidAndTouched(nameForm: string): boolean | undefined {
-    return !this.isValid(nameForm) && this.isTouched(nameForm)
+    return this.generalMethod.isValidAndTouched(nameForm,this.form)
   }
 
 }

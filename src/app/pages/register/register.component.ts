@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } fro
 import { LogSvcService } from '../../services/log-svc.service';
 import { catchError } from 'rxjs';
 import { Router } from '@angular/router';
+import { GeneralMetodService } from '../../services/general-metod.service';
 
 @Component({
   selector: 'app-register',
@@ -16,9 +17,11 @@ export class RegisterComponent implements OnInit {
 
 
   constructor(
-    public formBuider: FormBuilder,
-    public logSvc: LogSvcService,
-    public router: Router) { }
+    private formBuider: FormBuilder,
+    private logSvc: LogSvcService,
+    private router: Router,
+    private generalMethod: GeneralMetodService
+    ) { }
 
 
   ngOnInit(): void {
@@ -47,16 +50,9 @@ export class RegisterComponent implements OnInit {
 
     })
   }
-  isValid(nameForm:string):boolean|undefined{
-    return this.form.get(nameForm)?.valid
-  }
-
-  isTouched(nameForm:string):boolean|undefined{
-    return this.form.get(nameForm)?.touched
-  }
 
   isValidAndTouched(nameForm:string):boolean|undefined{
-    return !this.isValid(nameForm) && this.isTouched(nameForm)
+    return this.generalMethod.isValidAndTouched(nameForm, this.form)
   }
 
   passwordMatchValidator=(formC:FormControl):ValidationErrors|null => {

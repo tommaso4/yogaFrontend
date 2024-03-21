@@ -1,1 +1,19 @@
-<p>delete-user works!</p>
+<div class="delete-asana">
+  <div *ngIf="!this.visibility">
+    <form [formGroup]="form">
+      <div>
+        <label for="id">Enter the Id of the User to delete: </label>
+        <input type="text" formControlName="id" class="form-control">
+      </div>
+      <div *ngIf="this.isValidAnfTouched('id')" class="alert alert-warning">
+        <p>Id Required</p>
+      </div>
+      <button [disabled]="!form.valid" (click)="visibilityTrue()">Delete User</button>
+    </form>
+  </div>
+  <div *ngIf="this.visibility">
+    <p>Confirm to delete user with ID: {{this.form.value.id}}?</p>
+    <button (click)="visibilityFalse()" class="btn btn-primary">Cancel</button>
+    <button (click)="deleteUser()" class="btn btn-danger">Delete</button>
+  </div>
+</div>

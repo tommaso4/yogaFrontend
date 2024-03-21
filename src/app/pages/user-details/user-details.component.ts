@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LogSvcService } from '../../services/log-svc.service';
 import { Router } from '@angular/router';
 import { Subscription, catchError } from 'rxjs';
+import { ManagementSvcService } from '../../services/management-svc.service';
 
 @Component({
   selector: 'app-user-details',
@@ -18,8 +19,9 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
   deletedUser: boolean = false;
 
   constructor(
-    private logSvc: LogSvcService,
-    private router: Router
+    private router: Router,
+    private managementSvc: ManagementSvcService,
+    private logSvc: LogSvcService
   ) { }
 
   ngOnInit() {
@@ -36,7 +38,7 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
   deleteUser() {
     this.deletedUser = true;
     if (this.idUser)
-      this.subDeleteUser =this.logSvc.deleteUser(this.idUser).pipe(catchError(err => {
+      this.subDeleteUser =this.managementSvc.deleteUser(this.idUser).pipe(catchError(err => {
         throw err;
       })).subscribe(()=>{
         setTimeout(() => {
