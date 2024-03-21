@@ -29,7 +29,7 @@ export class LogSvcService implements OnDestroy {
     this.isLogged()
     this.startLogoutTimer()
     this.setupEventListeners()
-    this.setWindowCloseListener()
+    // this.setWindowCloseListener()
   }
 
   ngOnDestroy(): void {

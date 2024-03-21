@@ -23,18 +23,13 @@ export class SliderAsanaComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.subSliderAsa = this.asanaSvc.getAllAsana().pipe().subscribe(data => {
-  this.allAsana = data.response
-})
-
-    // this.asanaSvc.allAsana$.subscribe(asana => {
-    //   this.allAsana = asana
-    //   this.allAsana?.sort((a, b) => (a.id - b.id))
-    // })
-  }
+      this.subSliderAsa =  this.asanaSvc.allAsana$.subscribe(asana => {
+      this.allAsana = asana
+    })
+}
 
   ngOnDestroy(): void {
-    this.subSliderAsa.unsubscribe();
+    if(this.subSliderAsa)this.subSliderAsa.unsubscribe();
     this.stop();
   }
 
@@ -76,6 +71,7 @@ export class SliderAsanaComponent implements OnInit, OnDestroy {
     this.selectedValue = undefined;
     this.stop()
   }
+
   speakAsanaName() {
     if (this.allAsana && this.allAsana[this.courrentIndex]) {
       const asanaName = this.allAsana[this.courrentIndex].name;

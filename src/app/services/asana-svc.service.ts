@@ -31,7 +31,8 @@ export class AsanaSvcService {
   getAllAsana(): Observable<IResponseDataAsana> {
     const header = this.generalMethods.getHeaders()
     return this.http.get<IResponseDataAsana>(this.getAllAsanaUrl, { headers: header }).pipe(tap(data => {
-      this.allAsanaBvr.next(data.response)
+      let sortedData = data.response.sort((a, b) => (a.id - b.id))
+      this.allAsanaBvr.next(sortedData)
     }))
   }
 
