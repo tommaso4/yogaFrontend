@@ -17,21 +17,7 @@ html {
   background-color: rgba(24, 176, 203, 0.3);
 }
 html ::-webkit-scrollbar {
-  width: 12px;
-  border: 1px solid rgba(24, 176, 203, 0.3);
-}
-html ::-webkit-scrollbar-track {
-  background: rgba(24, 176, 203, 0.3);
-}
-html ::-webkit-scrollbar-thumb {
-  background: rgba(24, 176, 203, 0.3);
-}
-html ::-webkit-scrollbar-thumb:hover {
-  background: #18B0CB;
-}
-html ::-webkit-scrollbar-button {
-  border: 1px solid #18B0CB;
-  background-color: #F8B037;
+  width: 0vw;
 }
 
 html,
@@ -213,8 +199,8 @@ table {
   flex-direction: column;
   background-color: #18B0CB;
   position: absolute;
-  right: 40px;
-  top: 50px;
+  right: 3vw;
+  top: 9vh;
   z-index: 10;
 }
 @media screen and (max-width: 426px) {
