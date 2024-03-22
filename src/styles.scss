@@ -37,22 +37,7 @@ html {
   background-color: $azzure-bg;
 
   ::-webkit-scrollbar {
-    width: 1vw;
-    border: 1px  solid $azzure-bg;
-
-  }
-  ::-webkit-scrollbar-track {
-    background: $azzure-bg;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: $azzure-bg;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: $azzure;
-  }
-  ::-webkit-scrollbar-button{
-    border: 1px solid $azzure;
-    background-color: $orange;
+    width: 0vw;
   }
 }
 

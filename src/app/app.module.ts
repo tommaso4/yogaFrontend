@@ -23,6 +23,8 @@ import { HeartSvgComponent } from './component/heart-svg/heart-svg.component';
 import { SliderAsanaComponent } from './pages/slider-asana/slider-asana.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { NotAuhtComponent } from './pages/not-auht/not-auht.component';
+import { GratitudeComponent } from './pages/gratitude/gratitude.component';
+import { AboutYogaComponent } from './pages/about-yoga/about-yoga.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { NotAuhtComponent } from './pages/not-auht/not-auht.component';
     SliderAsanaComponent,
     UserDetailsComponent,
     NotAuhtComponent,
+    GratitudeComponent,
+    AboutYogaComponent,
   ],
   imports: [
     BrowserModule,

@@ -29,7 +29,7 @@ export class LogSvcService implements OnDestroy {
     this.isLogged()
     this.startLogoutTimer()
     this.setupEventListeners()
-    // this.setWindowCloseListener()
+    this.setWindowCloseListener()
   }
 
   ngOnDestroy(): void {
@@ -65,6 +65,15 @@ export class LogSvcService implements OnDestroy {
     this.isLoggedIn.next(false)
     this.router.navigate(['/login']);
   }
+
+  logoutLessNavigate(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('role');
+    localStorage.removeItem('idUser');
+    this.isLoggedIn.next(false)
+  }
+
   isLogged() {
     let token = localStorage.getItem('token');
     if (token) {

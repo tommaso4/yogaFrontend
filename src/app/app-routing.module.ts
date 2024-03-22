@@ -12,8 +12,9 @@ import { PersonalAsanaComponent } from './pages/personal-asana/personal-asana.co
 import { SliderAsanaComponent } from './pages/slider-asana/slider-asana.component';
 import { AuthGuardGuard } from './guard/auth-guard.guard';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
-import { AdminGuardGuard } from './guard/admin-guard.guard';
 import { NotAuhtComponent } from './pages/not-auht/not-auht.component';
+import { GratitudeComponent } from './pages/gratitude/gratitude.component';
+import { AboutYogaComponent } from './pages/about-yoga/about-yoga.component';
 
 const routes: Routes = [
   {path: '',pathMatch:'full',redirectTo:'/login'},
@@ -27,6 +28,8 @@ const routes: Routes = [
     {path:'detail/:id', component: DetailAsanaComponent},
     {path: 'myAsana', component: PersonalAsanaComponent},
     {path: 'userDetail', component: UserDetailsComponent},
+    {path: 'gratitude', component: GratitudeComponent},
+    {path: 'aboutYoga', component: AboutYogaComponent},
   ],canActivate:[AuthGuardGuard]},
   {path: 'sliderAsana', component: SliderAsanaComponent},
   { path: 'managementAsana', loadChildren: () => import('./management-asana/management-asana.module')

@@ -3,13 +3,15 @@
 #footer {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   position: fixed;
   bottom: 0;
   width: 100%;
   height: 10vh;
   background-color: $orange;
-  h4 {
-    color: rgb(47, 0, 255);
+  z-index: 20;
+  p:hover{
+    cursor: pointer;
+    transform: scale(1.1);
   }
 }
