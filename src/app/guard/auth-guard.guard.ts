@@ -16,8 +16,6 @@ export class AuthGuardGuard implements CanActivate, CanActivateChild {
   : Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       return this.logSvc.authLog$.pipe(map(loggedIn => {
       if (!loggedIn) this.router.navigate(['/notAuthorized']);
-      console.log(loggedIn);
-
       return loggedIn;
     }));
   }

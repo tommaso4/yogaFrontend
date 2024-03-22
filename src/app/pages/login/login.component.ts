@@ -53,9 +53,15 @@ export class LoginComponent implements OnInit, OnDestroy {
         let role: string | null = this.jwt.decodeToken(token).role;
         if (role) {
           if (role === 'ADMIN') {
-            this.router.navigate(['/managementAsana']);
+            this.popuplogo()
+            setTimeout(()=>{
+              this.router.navigate(['/managementAsana']);
+            }, 4500)
           } else if (role === 'CLIENT') {
-            this.router.navigate(['/home']);
+            this.popuplogo()
+            setTimeout(()=>{
+              this.router.navigate(['/home']);
+            }, 4500)
           }
           this.loading = false;
         }
@@ -65,5 +71,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   isValidAndTouched(nameForm: string): boolean | undefined {
     return this.generalMethod.isValidAndTouched(nameForm, this.form)
+  }
+
+  popuplogo(){
+    const logo = document.getElementById('container-popup')
+    logo?.classList.remove('d-none')
   }
 }

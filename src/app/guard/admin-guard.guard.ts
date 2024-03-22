@@ -13,8 +13,6 @@ export class AdminGuardGuard implements CanActivate, CanActivateChild {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let role = localStorage.getItem('role')
-    console.log(role);
-
     if (role) {
       if (role === 'ADMIN') {
         return true;
@@ -26,6 +24,7 @@ export class AdminGuardGuard implements CanActivate, CanActivateChild {
       this.router.navigate(['/notAuthorized'])
       return false;
     }
+
   }
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot)
     : Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

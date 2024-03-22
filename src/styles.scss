@@ -23,6 +23,7 @@ $carne: #D89F9F;
 $purple: rgb(110, 30, 30);
 $orange: #F8B037;
 $azzure: #18B0CB;
+$azzure-popup: #19dcff;
 $azzure-bg: rgba(24, 176, 203, 0.3);
 
 .font-primary {
@@ -36,7 +37,7 @@ html {
   background-color: $azzure-bg;
 
   ::-webkit-scrollbar {
-    width: 12px;
+    width: 1vw;
     border: 1px  solid $azzure-bg;
 
   }
