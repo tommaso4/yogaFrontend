@@ -12,17 +12,17 @@ export class AuthGuardGuard implements CanActivate, CanActivateChild {
     private logSvc:LogSvcService,
     private router: Router
   ){}
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
+  : Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       return this.logSvc.authLog$.pipe(map(loggedIn => {
-      if (!loggedIn) this.router.navigate(['/login']);
+      if (!loggedIn) this.router.navigate(['/notAuthorized']);
+      console.log(loggedIn);
+
       return loggedIn;
     }));
   }
-  canActivateChild(
-    childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivateChild(childRoute: ActivatedRouteSnapshot,state: RouterStateSnapshot)
+  : Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.canActivate(childRoute,state)
   }
 }

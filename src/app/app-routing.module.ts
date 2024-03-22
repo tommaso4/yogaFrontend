@@ -12,6 +12,8 @@ import { PersonalAsanaComponent } from './pages/personal-asana/personal-asana.co
 import { SliderAsanaComponent } from './pages/slider-asana/slider-asana.component';
 import { AuthGuardGuard } from './guard/auth-guard.guard';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
+import { AdminGuardGuard } from './guard/admin-guard.guard';
+import { NotAuhtComponent } from './pages/not-auht/not-auht.component';
 
 const routes: Routes = [
   {path: '',pathMatch:'full',redirectTo:'/login'},
@@ -27,7 +29,9 @@ const routes: Routes = [
     {path: 'userDetail', component: UserDetailsComponent},
   ],canActivate:[AuthGuardGuard]},
   {path: 'sliderAsana', component: SliderAsanaComponent},
-  { path: 'managementAsana', loadChildren: () => import('./management-asana/management-asana.module').then(m => m.ManagementAsanaModule) },
+  { path: 'managementAsana', loadChildren: () => import('./management-asana/management-asana.module')
+  .then(m => m.ManagementAsanaModule) },
+  {path: 'notAuthorized', component : NotAuhtComponent}
 ];
 
 @NgModule({

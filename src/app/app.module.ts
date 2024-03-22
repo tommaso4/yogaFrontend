@@ -22,6 +22,7 @@ import { AsanaFilteredComponent } from './component/asana-filtered/asana-filtere
 import { HeartSvgComponent } from './component/heart-svg/heart-svg.component';
 import { SliderAsanaComponent } from './pages/slider-asana/slider-asana.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
+import { NotAuhtComponent } from './pages/not-auht/not-auht.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { UserDetailsComponent } from './pages/user-details/user-details.componen
     AsanaFilteredComponent,
     HeartSvgComponent,
     SliderAsanaComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    NotAuhtComponent,
   ],
   imports: [
     BrowserModule,
